@@ -31,7 +31,7 @@
             </v-col>
         </v-row>
         <v-row class="">
-            <v-col cols="12" lg="4">
+            <!-- <v-col cols="12" lg="12">
                 <base-card class="h-100">
                     <VueSlickCarousel class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettingsSingleItem">
                         <div v-for="item in 3" :key="item" class="px-4 pt-4">
@@ -41,20 +41,12 @@
                                     <p class="text-14 grey--text text--darken-2 mb-6">
                                         Starting at $39 & save upto 40%
                                     </p>
-                                    <router-link to="/" class="
-                                d-inline-block
-                                bb-primary
-                                text-decoration-none
-                                black--text
-                                font-600
-                              ">
+                                    <router-link to="/" class=" d-inline-block bb-primary text-decoration-none black--text font-600">
                                         SHOP NOW
                                     </router-link>
                                 </v-col>
                             </v-row>
-
-                            <v-img contain src="../../assets/images/products/Rectangle 130.png">
-                            </v-img>
+                            <v-img contain src="../../assets/images/products/Rectangle 130.png" />
                         </div>
 
                         <template #prevArrow="arrowOption">
@@ -75,17 +67,18 @@
                         </template>
                     </VueSlickCarousel>
                 </base-card>
-            </v-col>
-            <v-col cols="12" lg="8">
-                <h2 class="mb-0">Top Picks</h2>
-                <VueSlickCarousel class="slick-secondary mb-6" :arrows="true" :dots="false" v-bind="slickSettingsFour">
+            </v-col> -->
+            <v-col cols="12" lg="12">
+                <!-- <h2 class="mb-0">Top Picks</h2> -->
+                <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
+                    v-bind="slickSettingsFour">
                     <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
-                            <h5 class="primary--text mr-1">$350</h5>
-                            <h5 class="grey--text text--darken-1">$550</h5>
+                            <h5 class="primary--text mr-1">${{ item.precio }}</h5>
+                            <h5 class="grey--text text--darken-1">${{ item.descuento }}</h5>
                         </div>
                     </v-col>
 
@@ -106,7 +99,7 @@
                         </v-btn>
                     </template>
                 </VueSlickCarousel>
-                <base-card cardHoverShadow class="mb-6">
+                <!-- <base-card cardHoverShadow class="mb-6">
                     <div class="
                         px-8
                         py-4
@@ -132,16 +125,17 @@
                           ">SHOP NOW</a>
                         </div>
                     </div>
-                </base-card>
+                </base-card> -->
 
-                <VueSlickCarousel class="slick-secondary mb-6" :arrows="true" :dots="false" v-bind="slickSettingsFour">
-                    <v-col cols="12" v-for="(item, index) in gardenGuitar" :key="index">
+                <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
+                    v-bind="slickSettingsFour">
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
-                            <h5 class="primary--text mr-1">$350</h5>
-                            <h5 class="grey--text text--darken-1">$550</h5>
+                            <h5 class="primary--text mr-1">${{ item.precio }}</h5>
+                            <h5 class="grey--text text--darken-1">${{ item.descuento }}</h5>
                         </div>
                     </v-col>
 
@@ -165,7 +159,7 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" class="pb-0">
+            <!-- <v-col cols="12" class="pb-0">
                 <h2 class="mb-0">Featured Categories</h2>
             </v-col>
             <v-col cols="12" lg="4" class="mb-4">
@@ -267,14 +261,15 @@
                         </v-row>
                     </div>
                 </base-card>
-            </v-col>
+            </v-col> -->
 
             <v-col cols="12" class="pb-0">
-                <h2 class="mb-0">Most Viewed</h2>
+                <!-- <h2 class="mb-0">Most Viewed</h2> -->
             </v-col>
             <v-col cols="12" class="px-0">
-                <VueSlickCarousel class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettings">
-                    <v-col cols="12" v-for="(item, index) in getProducts.slice(16, 24).map(n => n)" :key="index">
+                <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
+                    v-bind="slickSettings">
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
                         <CardCart :content-img="item.img" :content-text="item.title" :counter="item.qty" class="m-5"
                             @cartRemove="removeCart(item)" @cartAdd="addCart(item)" />
                     </v-col>
@@ -299,11 +294,11 @@
             </v-col>
 
             <v-col cols="12" class="pb-0">
-                <h2 class="mb-0">New Arrivals</h2>
+                <!-- <h2 class="mb-0">New Arrivals</h2> -->
             </v-col>
             <v-col cols="12" class="px-0">
-                <VueSlickCarousel class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettingsSixItem">
-                    <v-col cols="12" v-for="(n, index) in newArrivals" :key="index">
+                <VueSlickCarousel v-if="flashDeals.length > 0"  class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettingsSixItem">
+                    <v-col cols="12" v-for="(n, index) in flashDeals" :key="index">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="n.img"></v-img>
 
                         <h5 class="mb-1">{{ n.title }}</h5>
@@ -329,7 +324,7 @@
                 </VueSlickCarousel>
             </v-col>
 
-            <v-col cols="12">
+            <!-- <v-col cols="12">
                 <base-card card cardHoverShadow>
                     <v-img cover height="280" src="../../assets/images/products/bg-gradient.png">
                         <div class="fill-height left-right-gradient d-flex align-center">
@@ -349,9 +344,9 @@
                         </div>
                     </v-img>
                 </base-card>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="12" lg="6">
+            <!-- <v-col cols="12" lg="6">
                 <v-img class="br-8 mb-6" contain src="../../assets/images/products/photo-1.png"></v-img>
                 <h3 class="font-600 mb-1">Art of Keeping Home Minimal & Organised.</h3>
                 <div class="d-flex flex-wrap mb-4">
@@ -390,7 +385,7 @@
                 <router-link to="/" class="text-decoration-none font-600 bb-primary black--text">
                     CONTINUE READING
                 </router-link>
-            </v-col>
+            </v-col> -->
         </v-row>
     </v-container>
 </template>
@@ -911,38 +906,60 @@ export default {
                 ],
             },
             flashDeals: [
-                {
-                    img: require("../../assets/images/products/flash-1.png"),
-                    name: "Sneakers",
-                },
-                {
-                    img: require("../../assets/images/products/flash-2.png"),
-                    name: "Watch",
-                },
-                {
-                    img: require("../../assets/images/products/flash-3.png"),
-                    name: "Mobile",
-                },
-                {
-                    img: require("../../assets/images/products/flash-4.png"),
-                    name: "Zapple Watch",
-                },
-                {
-                    img: require("../../assets/images/products/flash-1.png"),
-                    name: "Hike Sneakers",
-                },
-                {
-                    img: require("../../assets/images/products/flash-2.png"),
-                    name: "Watch",
-                },
-                {
-                    img: require("../../assets/images/products/flash-3.png"),
-                    name: "Mobile",
-                },
-                {
-                    img: require("../../assets/images/products/flash-4.png"),
-                    name: "Zapple Watch",
-                },
+                // {
+                //     img: require("../../assets/images/products/flash-1.png"),
+                //     name: "Sneakers",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-2.png"),
+                //     name: "Watch",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-3.png"),
+                //     name: "Mobile",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-4.png"),
+                //     name: "Zapple Watch",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-1.png"),
+                //     name: "Hike Sneakers",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-2.png"),
+                //     name: "Watch",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-3.png"),
+                //     name: "Mobile",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-4.png"),
+                //     name: "Zapple Watch",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
+                // {
+                //     img: require("../../assets/images/products/flash-4.png"),
+                //     name: "Zapple Watch asdasd",
+                //     precio: 123,
+                //     descuento: 21,
+                // },
             ],
             gardenGuitar: [
                 {
@@ -1032,8 +1049,19 @@ export default {
         async getProductos() {
             try {
                 let { data } = await axios('/api/get-productos')
-             
-                this.items_productos = data
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    //         {
+                    //   id: 1,
+                    //   img: require("../assets/images/products/flash-1.png"),
+                    //   title: 'Sneakers',
+                    //   category: 'Sneakers',
+                    //   amount: 300,
+                    //   rating: 3,
+                    //   qty: 0
+                    // },
+                    this.flashDeals.push({ id: element.id, price: element.precio_normal , category: element.categoria, amount: element.precio_normal, qty: 0, title: element.nombre ?? '', img: element.imagen == '' || element.imagen == null ? 'https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png' : element.imagen, name: element.nombre ?? '', precio: element.precio_normal ?? 999, descuento: 23 })
+                }
             } catch (error) {
                 console.log(error)
             }
@@ -1047,5 +1075,4 @@ export default {
             rgb(255, 255, 255, 1),
             rgb(255, 255, 255, 0.9),
             rgb(255, 255, 255, 0));
-}
-</style>
+}</style>

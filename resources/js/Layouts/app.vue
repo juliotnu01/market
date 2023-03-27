@@ -2,7 +2,9 @@
     <v-app>
         <m-header />
         <v-container fluid>
-            <router-view></router-view>
+            <KeepAlive>
+                <router-view></router-view>
+            </KeepAlive>
             <!-- <div class="text-center mb-4">
                 <v-btn color="primary" @click="alert = !alert">
                     Toggle

@@ -57,7 +57,7 @@ class ProductoController extends Controller
                 foreach ($request['productos'] as $key => $element) {
                     $producto = new Productos();
                     $producto->create([
-                        'categoría' => $element["categoria"],
+                        'categoria' => $element["categoria"],
                         'descripcion_corta' => $element["descripcion_corta"],
                         'descripcion' => $element["descripcion"],
                         'destacaado' => $element["destacado"],

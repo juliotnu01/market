@@ -437,31 +437,62 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           slidesToScroll: 1
         }
       }]
-    }), _defineProperty(_ref, "flashDeals", [{
-      img: __webpack_require__(/*! ../../assets/images/products/flash-1.png */ "./resources/js/assets/images/products/flash-1.png"),
-      name: "Sneakers"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-2.png */ "./resources/js/assets/images/products/flash-2.png"),
-      name: "Watch"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-3.png */ "./resources/js/assets/images/products/flash-3.png"),
-      name: "Mobile"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-4.png */ "./resources/js/assets/images/products/flash-4.png"),
-      name: "Zapple Watch"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-1.png */ "./resources/js/assets/images/products/flash-1.png"),
-      name: "Hike Sneakers"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-2.png */ "./resources/js/assets/images/products/flash-2.png"),
-      name: "Watch"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-3.png */ "./resources/js/assets/images/products/flash-3.png"),
-      name: "Mobile"
-    }, {
-      img: __webpack_require__(/*! ../../assets/images/products/flash-4.png */ "./resources/js/assets/images/products/flash-4.png"),
-      name: "Zapple Watch"
-    }]), _defineProperty(_ref, "gardenGuitar", [{
+    }), _defineProperty(_ref, "flashDeals", [
+      // {
+      //     img: require("../../assets/images/products/flash-1.png"),
+      //     name: "Sneakers",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-2.png"),
+      //     name: "Watch",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-3.png"),
+      //     name: "Mobile",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-4.png"),
+      //     name: "Zapple Watch",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-1.png"),
+      //     name: "Hike Sneakers",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-2.png"),
+      //     name: "Watch",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-3.png"),
+      //     name: "Mobile",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-4.png"),
+      //     name: "Zapple Watch",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+      // {
+      //     img: require("../../assets/images/products/flash-4.png"),
+      //     name: "Zapple Watch asdasd",
+      //     precio: 123,
+      //     descuento: 21,
+      // },
+    ]), _defineProperty(_ref, "gardenGuitar", [{
       img: __webpack_require__(/*! ../../assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png */ "./resources/js/assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png"),
       name: "Painted Leaf Begonia"
     }, {
@@ -528,7 +559,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     getProductos: function getProductos() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _yield$axios, data;
+        var _yield$axios, data, index, _element$nombre, _element$nombre2, _element$precio_norma, element;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -538,7 +569,29 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             case 3:
               _yield$axios = _context.sent;
               data = _yield$axios.data;
-              _this.items_productos = data;
+              for (index = 0; index < data.length; index++) {
+                element = data[index]; //         {
+                //   id: 1,
+                //   img: require("../assets/images/products/flash-1.png"),
+                //   title: 'Sneakers',
+                //   category: 'Sneakers',
+                //   amount: 300,
+                //   rating: 3,
+                //   qty: 0
+                // },
+                _this.flashDeals.push({
+                  id: element.id,
+                  price: element.precio_normal,
+                  category: element.categoria,
+                  amount: element.precio_normal,
+                  qty: 0,
+                  title: (_element$nombre = element.nombre) !== null && _element$nombre !== void 0 ? _element$nombre : '',
+                  img: element.imagen == '' || element.imagen == null ? 'https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png' : element.imagen,
+                  name: (_element$nombre2 = element.nombre) !== null && _element$nombre2 !== void 0 ? _element$nombre2 : '',
+                  precio: (_element$precio_norma = element.precio_normal) !== null && _element$precio_norma !== void 0 ? _element$precio_norma : 999,
+                  descuento: 23
+                });
+              }
               _context.next = 11;
               break;
             case 8:
@@ -695,80 +748,9 @@ var render = function render() {
   }), 1)], 1)], 1), _vm._v(" "), _c("v-row", {}, [_c("v-col", {
     attrs: {
       cols: "12",
-      lg: "4"
+      lg: "12"
     }
-  }, [_c("base-card", {
-    staticClass: "h-100"
-  }, [_c("VueSlickCarousel", _vm._b({
-    staticClass: "slick-secondary",
-    attrs: {
-      arrows: true,
-      dots: false
-    },
-    scopedSlots: _vm._u([{
-      key: "prevArrow",
-      fn: function fn(arrowOption) {
-        return [_c("v-btn", {
-          staticClass: "mx-2 slick-left-arrow",
-          attrs: {
-            icon: "",
-            small: ""
-          }
-        }, [_c("v-icon", {
-          attrs: {
-            dark: ""
-          }
-        }, [_vm._v("\n                                " + _vm._s(arrowOption) + "\n                                mdi-arrow-left\n                            ")])], 1)];
-      }
-    }, {
-      key: "nextArrow",
-      fn: function fn(arrowOption) {
-        return [_c("v-btn", {
-          staticClass: "mx-2 slick-right-arrow",
-          attrs: {
-            icon: "",
-            small: ""
-          }
-        }, [_c("v-icon", {
-          attrs: {
-            dark: ""
-          }
-        }, [_vm._v("\n                                " + _vm._s(arrowOption) + "\n                                mdi-arrow-right\n                            ")])], 1)];
-      }
-    }])
-  }, "VueSlickCarousel", _vm.slickSettingsSingleItem, false), _vm._l(3, function (item) {
-    return _c("div", {
-      key: item,
-      staticClass: "px-4 pt-4"
-    }, [_c("v-row", [_c("v-col", {
-      staticClass: "mx-auto text-center mt-14",
-      attrs: {
-        cols: "12",
-        lg: "8"
-      }
-    }, [_c("h2", {
-      staticClass: "mb-2"
-    }, [_vm._v("Introducing New Winter Collection")]), _vm._v(" "), _c("p", {
-      staticClass: "text-14 grey--text text--darken-2 mb-6"
-    }, [_vm._v("\n                                    Starting at $39 & save upto 40%\n                                ")]), _vm._v(" "), _c("router-link", {
-      staticClass: "d-inline-block bb-primary text-decoration-none black--text font-600",
-      attrs: {
-        to: "/"
-      }
-    }, [_vm._v("\n                                    SHOP NOW\n                                ")])], 1)], 1), _vm._v(" "), _c("v-img", {
-      attrs: {
-        contain: "",
-        src: "../../assets/images/products/Rectangle 130.png"
-      }
-    })], 1);
-  }), 0)], 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "8"
-    }
-  }, [_c("h2", {
-    staticClass: "mb-0"
-  }, [_vm._v("Top Picks")]), _vm._v(" "), _c("VueSlickCarousel", _vm._b({
+  }, [_vm.flashDeals.length > 0 ? _c("VueSlickCarousel", _vm._b({
     staticClass: "slick-secondary mb-6",
     attrs: {
       arrows: true,
@@ -808,7 +790,7 @@ var render = function render() {
           }
         }, [_vm._v("\n                            " + _vm._s(arrowOption) + "\n                            mdi-arrow-right\n                        ")])], 1)];
       }
-    }])
+    }], null, false, 2876525060)
   }, "VueSlickCarousel", _vm.slickSettingsFour, false), _vm._l(_vm.flashDeals, function (item, index) {
     return _c("v-col", {
       key: index,
@@ -836,32 +818,10 @@ var render = function render() {
       staticClass: "d-flex align-center flex-wrap"
     }, [_c("h5", {
       staticClass: "primary--text mr-1"
-    }, [_vm._v("$350")]), _vm._v(" "), _c("h5", {
+    }, [_vm._v("$" + _vm._s(item.precio))]), _vm._v(" "), _c("h5", {
       staticClass: "grey--text text--darken-1"
-    }, [_vm._v("$550")])])], 1);
-  }), 1), _vm._v(" "), _c("base-card", {
-    staticClass: "mb-6",
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "px-8 py-4 d-flex flex-wrap flex-sm-nowrap align-center justify-sm-space-odd justify-center"
-  }, [_c("div", [_c("v-img", {
-    staticClass: "mx-auto",
-    attrs: {
-      "max-width": "290",
-      src: "../../assets/images/products/shoes-1.png"
-    }
-  })], 1), _vm._v(" "), _c("div", {}, [_c("h3", {
-    staticClass: "mb-2"
-  }, [_vm._v("Converse Collecitons")]), _vm._v(" "), _c("p", {
-    staticClass: "grey--text text--darken-2 mb-4"
-  }, [_vm._v("\n                            Get the most exciting deals. Starting at $59\n                        ")]), _vm._v(" "), _c("a", {
-    staticClass: "text-decoration-none black--text bb-primary font-weight-bold",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("SHOP NOW")])])])]), _vm._v(" "), _c("VueSlickCarousel", _vm._b({
+    }, [_vm._v("$" + _vm._s(item.descuento))])])], 1);
+  }), 1) : _vm._e(), _vm._v(" "), _vm.flashDeals.length > 0 ? _c("VueSlickCarousel", _vm._b({
     staticClass: "slick-secondary mb-6",
     attrs: {
       arrows: true,
@@ -901,8 +861,8 @@ var render = function render() {
           }
         }, [_vm._v("\n                            " + _vm._s(arrowOption) + "\n                            mdi-arrow-right\n                        ")])], 1)];
       }
-    }])
-  }, "VueSlickCarousel", _vm.slickSettingsFour, false), _vm._l(_vm.gardenGuitar, function (item, index) {
+    }], null, false, 2876525060)
+  }, "VueSlickCarousel", _vm.slickSettingsFour, false), _vm._l(_vm.flashDeals, function (item, index) {
     return _c("v-col", {
       key: index,
       attrs: {
@@ -929,237 +889,20 @@ var render = function render() {
       staticClass: "d-flex align-center flex-wrap"
     }, [_c("h5", {
       staticClass: "primary--text mr-1"
-    }, [_vm._v("$350")]), _vm._v(" "), _c("h5", {
+    }, [_vm._v("$" + _vm._s(item.precio))]), _vm._v(" "), _c("h5", {
       staticClass: "grey--text text--darken-1"
-    }, [_vm._v("$550")])])], 1);
-  }), 1)], 1)], 1), _vm._v(" "), _c("v-row", [_c("v-col", {
+    }, [_vm._v("$" + _vm._s(item.descuento))])])], 1);
+  }), 1) : _vm._e()], 1)], 1), _vm._v(" "), _c("v-row", [_c("v-col", {
     staticClass: "pb-0",
     attrs: {
       cols: "12"
     }
-  }, [_c("h2", {
-    staticClass: "mb-0"
-  }, [_vm._v("Featured Categories")])]), _vm._v(" "), _c("v-col", {
-    staticClass: "mb-4",
-    attrs: {
-      cols: "12",
-      lg: "4"
-    }
-  }, [_c("router-link", {
-    staticClass: "text-decoration-none",
-    attrs: {
-      to: "/single-product"
-    }
-  }, [_c("base-card", {
-    staticClass: "p-relative h-100 d-flex align-center",
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("v-img", {
-    attrs: {
-      contain: "",
-      src: "../../assets/images/products/dslr-camera.png"
-    }
-  }), _vm._v(" "), _c("h3", {
-    staticClass: "text-uppercase p-absolute bottom-0 ma-5"
-  }, [_vm._v("camera")])], 1)], 1)], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "mb-4",
-    attrs: {
-      cols: "12",
-      lg: "8"
-    }
-  }, [_c("v-row", [_c("v-col", {
-    attrs: {
-      cols: "6",
-      lg: "6"
-    }
-  }, [_c("router-link", {
-    staticClass: "text-decoration-none",
-    attrs: {
-      to: "/single-product"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "pa-5"
-  }, [_c("v-img", {
-    staticClass: "mx-auto mb-5",
-    attrs: {
-      "max-width": "280",
-      src: "../../assets/images/products/ps4.png"
-    }
-  }), _vm._v(" "), _c("h5", {
-    staticClass: "font-600"
-  }, [_vm._v("GAMING")])], 1)])], 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "6",
-      lg: "6"
-    }
-  }, [_c("router-link", {
-    staticClass: "text-decoration-none",
-    attrs: {
-      to: "/single-product"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "pa-5"
-  }, [_c("v-img", {
-    staticClass: "mx-auto mb-5",
-    attrs: {
-      "max-width": "280",
-      src: "../../assets/images/products/apple-watch-4.png"
-    }
-  }), _vm._v(" "), _c("h5", {
-    staticClass: "font-600"
-  }, [_vm._v("WATCH")])], 1)])], 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "6",
-      lg: "6"
-    }
-  }, [_c("router-link", {
-    staticClass: "text-decoration-none",
-    attrs: {
-      to: "/single-product"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "pa-5"
-  }, [_c("v-img", {
-    staticClass: "mx-auto mb-5",
-    attrs: {
-      "max-width": "280",
-      src: "../../assets/images/products/drone.png"
-    }
-  }), _vm._v(" "), _c("h5", {
-    staticClass: "font-600"
-  }, [_vm._v("DRONE")])], 1)])], 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "6",
-      lg: "6"
-    }
-  }, [_c("router-link", {
-    staticClass: "text-decoration-none",
-    attrs: {
-      to: "/single-product"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "pa-5"
-  }, [_c("v-img", {
-    staticClass: "mx-auto mb-5",
-    attrs: {
-      "max-width": "280",
-      src: "../../assets/images/products/phone.png"
-    }
-  }), _vm._v(" "), _c("h5", {
-    staticClass: "font-600"
-  }, [_vm._v("PHONE")])], 1)])], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "mb-4",
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "px-8"
-  }, [_c("v-row", {
-    attrs: {
-      align: "center"
-    }
-  }, [_c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("h3", {
-    staticClass: "mb-2"
-  }, [_vm._v("\n                                Big Saves on Home Decoration. Save Upto 80%\n                            ")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 grey--text text--darken-2 mb-6"
-  }, [_vm._v("\n                                Easy payment policy, 12 months 0% in interest.\n                            ")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text-decoration-none bb-primary black--text font-600",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("\n                                SHOP NOW\n                            ")])], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("v-img", {
-    attrs: {
-      height: "292",
-      contain: "",
-      src: "../../assets/images/products/tableChair.png"
-    }
-  })], 1)], 1)], 1)])], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "mb-4",
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("base-card", {
-    staticClass: "grey darken-1 white--text",
-    attrs: {
-      cardHoverShadow: ""
-    }
-  }, [_c("div", {
-    staticClass: "px-8"
-  }, [_c("v-row", {
-    attrs: {
-      align: "center"
-    }
-  }, [_c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("h3", {
-    staticClass: "mb-2"
-  }, [_vm._v("\n                                Big Saves on Home Decoration. Save Upto 80%\n                            ")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 grey--text text--lighten-1 mb-6"
-  }, [_vm._v("\n                                Easy payment policy, 12 months 0% in interest.\n                            ")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text-decoration-none bb-primary white--text font-600",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("\n                                SHOP NOW\n                            ")])], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("v-img", {
-    attrs: {
-      height: "292",
-      contain: "",
-      src: "../../assets/images/products/outfit.png"
-    }
-  })], 1)], 1)], 1)])], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "pb-0",
-    attrs: {
-      cols: "12"
-    }
-  }, [_c("h2", {
-    staticClass: "mb-0"
-  }, [_vm._v("Most Viewed")])]), _vm._v(" "), _c("v-col", {
+  }), _vm._v(" "), _c("v-col", {
     staticClass: "px-0",
     attrs: {
       cols: "12"
     }
-  }, [_c("VueSlickCarousel", _vm._b({
+  }, [_vm.flashDeals.length > 0 ? _c("VueSlickCarousel", _vm._b({
     staticClass: "slick-secondary",
     attrs: {
       arrows: true,
@@ -1199,10 +942,8 @@ var render = function render() {
           }
         }, [_vm._v("\n                            " + _vm._s(arrowOption) + "\n                            mdi-arrow-right\n                        ")])], 1)];
       }
-    }])
-  }, "VueSlickCarousel", _vm.slickSettings, false), _vm._l(_vm.getProducts.slice(16, 24).map(function (n) {
-    return n;
-  }), function (item, index) {
+    }], null, false, 2033273252)
+  }, "VueSlickCarousel", _vm.slickSettings, false), _vm._l(_vm.flashDeals, function (item, index) {
     return _c("v-col", {
       key: index,
       attrs: {
@@ -1224,19 +965,17 @@ var render = function render() {
         }
       }
     })], 1);
-  }), 1)], 1), _vm._v(" "), _c("v-col", {
+  }), 1) : _vm._e()], 1), _vm._v(" "), _c("v-col", {
     staticClass: "pb-0",
     attrs: {
       cols: "12"
     }
-  }, [_c("h2", {
-    staticClass: "mb-0"
-  }, [_vm._v("New Arrivals")])]), _vm._v(" "), _c("v-col", {
+  }), _vm._v(" "), _c("v-col", {
     staticClass: "px-0",
     attrs: {
       cols: "12"
     }
-  }, [_c("VueSlickCarousel", _vm._b({
+  }, [_vm.flashDeals.length > 0 ? _c("VueSlickCarousel", _vm._b({
     staticClass: "slick-secondary",
     attrs: {
       arrows: true,
@@ -1276,8 +1015,8 @@ var render = function render() {
           }
         }, [_vm._v("\n                            " + _vm._s(arrowOption) + "\n                            mdi-arrow-right\n                        ")])], 1)];
       }
-    }])
-  }, "VueSlickCarousel", _vm.slickSettingsSixItem, false), _vm._l(_vm.newArrivals, function (n, index) {
+    }], null, false, 2033273252)
+  }, "VueSlickCarousel", _vm.slickSettingsSixItem, false), _vm._l(_vm.flashDeals, function (n, index) {
     return _c("v-col", {
       key: index,
       attrs: {
@@ -1294,117 +1033,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(n.title))]), _vm._v(" "), _c("h5", {
       staticClass: "primary--text"
     }, [_vm._v(_vm._s(n.price))])], 1);
-  }), 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12"
-    }
-  }, [_c("base-card", {
-    attrs: {
-      card: "",
-      cardHoverShadow: ""
-    }
-  }, [_c("v-img", {
-    attrs: {
-      cover: "",
-      height: "280",
-      src: "../../assets/images/products/bg-gradient.png"
-    }
-  }, [_c("div", {
-    staticClass: "fill-height left-right-gradient d-flex align-center"
-  }, [_c("v-row", {
-    staticClass: "ps-5 ps-sm-14 ma-0"
-  }, [_c("v-col", {
-    staticClass: "pa-0 ma-0",
-    attrs: {
-      cols: "12",
-      lg: "3"
-    }
-  }, [_c("h2", {
-    staticClass: "mb-4"
-  }, [_vm._v("\n                                    Build Your Own Youtube Studio Save Upto 70%\n                                ")]), _vm._v(" "), _c("p", {
-    staticClass: "grey--text text--darken-3 mb-6"
-  }, [_vm._v("\n                                    Everything you need to create your youtube studio\n                                ")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text-decoration-none font-600 black--text bb-primary",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("\n                                    DISCOVER EQUIPMENTS\n                                ")])], 1)], 1)], 1)])], 1)], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("v-img", {
-    staticClass: "br-8 mb-6",
-    attrs: {
-      contain: "",
-      src: "../../assets/images/products/photo-1.png"
-    }
-  }), _vm._v(" "), _c("h3", {
-    staticClass: "font-600 mb-1"
-  }, [_vm._v("Art of Keeping Home Minimal & Organised.")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-wrap mb-4"
-  }, [_c("v-icon", {
-    staticClass: "mr-1",
-    attrs: {
-      color: "grey darken-1",
-      small: ""
-    }
-  }, [_vm._v("mdi-clock-time-eight-outline")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 mb-0 mr-3 grey--text text--darken-1"
-  }, [_vm._v("\n                    24 February, 2020\n                ")]), _vm._v(" "), _c("v-icon", {
-    staticClass: "mr-1",
-    attrs: {
-      color: "grey darken-1",
-      small: ""
-    }
-  }, [_vm._v("mdi-clock-time-eight-outline")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 mb-0 mr-3 grey--text text--darken-1"
-  }, [_vm._v("3 Comments")])], 1), _vm._v(" "), _c("p", {
-    staticClass: "grey--text text--darken-3 mb-3"
-  }, [_vm._v("\n                Maecenas leo ante, gravida vel lectus ac, iaculis lobortis enim. Proin\n                nec orci nec nisl consequat molestie quis sit amet elit. Ut venenatis\n                dignissim diam in auctor.\n            ")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text-decoration-none font-600 bb-primary black--text",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("\n                CONTINUE READING\n            ")])], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      lg: "6"
-    }
-  }, [_c("v-img", {
-    staticClass: "br-8 mb-6",
-    attrs: {
-      contain: "",
-      src: "../../assets/images/products/photo-2.png"
-    }
-  }), _vm._v(" "), _c("h3", {
-    staticClass: "font-600 mb-1"
-  }, [_vm._v("The Monthly Guide to Cleaning Your Home.")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-wrap mb-4"
-  }, [_c("v-icon", {
-    staticClass: "mr-1",
-    attrs: {
-      color: "grey darken-1",
-      small: ""
-    }
-  }, [_vm._v("mdi-clock-time-eight-outline")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 mb-0 mr-3 grey--text text--darken-1"
-  }, [_vm._v("\n                    24 February, 2020\n                ")]), _vm._v(" "), _c("v-icon", {
-    staticClass: "mr-1",
-    attrs: {
-      color: "grey darken-1",
-      small: ""
-    }
-  }, [_vm._v("mdi-clock-time-eight-outline")]), _vm._v(" "), _c("p", {
-    staticClass: "text-14 mb-0 mr-3 grey--text text--darken-1"
-  }, [_vm._v("3 Comments")])], 1), _vm._v(" "), _c("p", {
-    staticClass: "grey--text text--darken-3 mb-3"
-  }, [_vm._v("\n                Maecenas leo ante, gravida vel lectus ac, iaculis lobortis enim. Proin\n                nec orci nec nisl consequat molestie quis sit amet elit. Ut venenatis\n                dignissim diam in auctor.\n            ")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text-decoration-none font-600 bb-primary black--text",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("\n                CONTINUE READING\n            ")])], 1)], 1)], 1);
+  }), 1) : _vm._e()], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

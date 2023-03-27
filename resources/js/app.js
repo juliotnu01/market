@@ -4,13 +4,14 @@ import vuetify from './plugins/vuetify'
 import  { store }  from "./plugins/store";
 import router from './plugins/routes'
 import "./assets/scss/_global.scss";
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import VueSlickCarousel from 'vue-slick-carousel'
-  import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-  
-  import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-Vue.component('m-app', require('./Layouts/app.vue').default)
+
+
 Vue.component(VueSlickCarousel)
 Vue.component("VueSlickCarousel", VueSlickCarousel);
+Vue.component('m-app', require('./Layouts/app.vue').default)
 
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
