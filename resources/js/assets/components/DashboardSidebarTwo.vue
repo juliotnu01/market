@@ -3,7 +3,7 @@
 
         <router-link to="/dashboard" class="dashboard-nav-link px-4">
             <div class="d-flex align-center">
-                <img v-svg-inline class="icon mr-2" src="@/assets/images/icons/board.svg" alt="" />
+                <img  class="icon mr-2" src="@/assets/images/icons/board.svg" alt="" />
                 <span>Dashboard</span>
             </div>
             <!-- <p class="mb-0">5</p>   -->
@@ -11,7 +11,7 @@
         
         <router-link to="/product-list" class="dashboard-nav-link px-4">
             <div class="d-flex align-center">
-                <img v-svg-inline class="icon mr-2" src="@/assets/images/icons/box.svg" alt="" />
+                <img  class="icon mr-2" src="@/assets/images/icons/box.svg" alt="" />
                 <span>Products</span>
                 
             </div>
@@ -19,21 +19,21 @@
         </router-link>
         <router-link  to="/edit-product" class="dashboard-nav-link px-4">
             <div class="d-flex align-center">
-                <img v-svg-inline class="icon mr-2" src="@/assets/images/icons/upload.svg" alt="" />
+                <img  class="icon mr-2" src="@/assets/images/icons/upload.svg" alt="" />
                 <span>Add New Product</span>
             </div>
             <p class="mb-0">1</p>  
         </router-link>
         <router-link  to="/vendor-order-list" class="dashboard-nav-link px-4">
             <div class="d-flex align-center">
-                <img v-svg-inline class="icon mr-2" src="@/assets/images/icons/shopping-cart.svg" alt="" />
+                <img  class="icon mr-2" src="@/assets/images/icons/shopping-cart.svg" alt="" />
                 <span>Orders</span>
             </div>
             <p class="mb-0">1</p>  
         </router-link>
         <router-link  to="/profile" class="dashboard-nav-link px-4">
             <div class="d-flex align-center">
-                <img v-svg-inline class="icon mr-2" src="@/assets/images/icons/gear-2.svg" alt="" />
+                <img  class="icon mr-2" src="@/assets/images/icons/gear-2.svg" alt="" />
                 <span>Account Settings</span>
             </div>
             

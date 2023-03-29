@@ -519,8 +519,7 @@ export default {
         }
     },
     mounted(){
-        this.$route.params.palabra_clave
-        if(this.$route.params.palabra_clave.length > 0){
+        if(this.$route.params.name == 'home.buscar.productos'){
             this.searchProducto()
         }
     },  

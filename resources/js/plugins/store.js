@@ -888,6 +888,7 @@ export const store = new Vuex.Store({
             },
         ],
         itemsBySearch: [],
+        overlay: false,
     },
     getters: {
         getProducts: (state) => state.products,
@@ -895,14 +896,16 @@ export const store = new Vuex.Store({
         getCategory: (state) => state.category,
         getRatings: (state) => state.ratings,
         itemsBySearch: (state) => state.itemsBySearch,
+        overlay: (state) => state.overlay,
     },
     actions: {
+        
         async getProductosBySearch({ commit }, dataPalabraSearch) {
             try {
                 let { data } = await axios(
                     `/api/get-producto-by-search/${dataPalabraSearch ?? ""}`
                 );
-                commit("setItemsBySarch",[])
+                commit("setItemsBySarch", []);
                 for (let index = 0; index < data.length; index++) {
                     const element = data[index];
                     commit("setItemsBySarch", {
@@ -921,7 +924,6 @@ export const store = new Vuex.Store({
                         descuento: 23,
                     });
                 }
-              
             } catch (error) {
                 console.log(error);
             }
@@ -934,13 +936,15 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        setOverlay(state, data){
+            state.overlay = data
+        },
         setItemsBySarch(state, data) {
-          if(data.length != []){
-            state.itemsBySearch.unshift(data);
-          }else{
-            state.itemsBySearch = data;
-
-          }
+            if (data.length != []) {
+                state.itemsBySearch.unshift(data);
+            } else {
+                state.itemsBySearch = data;
+            }
         },
         ADD_CART(state, data) {
             let productExist = false;

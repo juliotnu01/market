@@ -4,7 +4,7 @@
             <li v-for="(nav, index) in navigations" :key="index">
                 <a href="#">
                     <v-avatar tile size="20" class="mr-2">
-                        <img v-svg-inline class="icon" :src="nav.icon" alt="">
+                        <img class="icon" :src="nav.icon" alt="">
                     </v-avatar>
                     <p class="m-0 mb-0 flex-grow-1"> {{ nav.title }}</p>
                     <v-icon v-if="nav.menuData">mdi-chevron-right</v-icon>
@@ -15,7 +15,7 @@
                         <li v-for="(navTwo, index) in nav.menuData" :key="index">
                             <router-link to="/search-product" class="">
                                 <v-avatar tile size="20" class="mr-2">
-                                    <img v-svg-inline class="icon" :src="navTwo.icon" alt="">
+                                    <img class="icon" :src="navTwo.icon" alt="">
                                 </v-avatar>
                                 <p class="mb-0  flex-grow-1"> {{ navTwo.title }}</p>
                                 <v-icon v-if="navTwo.menuData">mdi-chevron-right</v-icon>
@@ -44,7 +44,7 @@
                         <li>
                             <a href="#" class="">
                                 <v-avatar tile size="20" class="mr-2">
-                                    <img v-svg-inline class="icon" src="../assets/images/icons/man.svg" alt="">
+                                    <img class="icon" src="../assets/images/icons/man.svg" alt="">
                                 </v-avatar>
                                 <p class="mb-0  flex-grow-1"> Man</p>
                                 <!-- <v-icon>mdi-chevron-right</v-icon> -->
@@ -535,4 +535,5 @@ $gray-900: #2B3445;
         }
 
     }
-}</style>
+}
+</style>

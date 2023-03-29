@@ -209,14 +209,15 @@
             </v-col>
             <v-col cols="12" lg="6" class="mb-4">
                 <base-card cardHoverShadow>
-                    <div class="px-8" @click.prevent="$router.push({name: 'home.buscar.productos'})" >
+                    <div class="px-8" @click.prevent="$router.push({ name: 'home.buscar.productos' })">
                         <v-row align="center">
                             <v-col cols="12" lg="6">
                                 <h3 class="mb-2">Big Saves on Home Decoration. Save Upto 80%</h3>
                                 <p class="text-14 grey--text text--darken-2 mb-6">
                                     Easy payment policy, 12 months 0% in interest.
                                 </p>
-                                <router-link :to="{name: 'home.buscar.productos'}"  class="text-decoration-none bb-primary black--text font-600">
+                                <router-link :to="{ name: 'home.buscar.productos' }"
+                                    class="text-decoration-none bb-primary black--text font-600">
                                     SHOP NOW
                                 </router-link>
                             </v-col>
@@ -228,15 +229,16 @@
                 </base-card>
             </v-col>
             <v-col cols="12" lg="6" class="mb-4">
-                <base-card cardHoverShadow class="grey darken-1 white--text" >
-                    <div class="px-8" @click.prevent="$router.push({name: 'home.buscar.productos'})">
+                <base-card cardHoverShadow class="grey darken-1 white--text">
+                    <div class="px-8" @click.prevent="$router.push({ name: 'home.buscar.productos' })">
                         <v-row align="center">
                             <v-col cols="12" lg="6">
                                 <h3 class="mb-2">Big Saves on Home Decoration. Save Upto 80%</h3>
                                 <p class="text-14 grey--text text--lighten-1 mb-6">
                                     Easy payment policy, 12 months 0% in interest.
                                 </p>
-                                <router-link :to="{name: 'home.buscar.productos'}" class="text-decoration-none bb-primary white--text font-600">
+                                <router-link :to="{ name: 'home.buscar.productos' }"
+                                    class="text-decoration-none bb-primary white--text font-600">
                                     SHOP NOW
                                 </router-link>
                             </v-col>
@@ -378,7 +380,7 @@
 <script>
 import Navbar from "../../components/navbar.vue";
 import CardCart from "../../assets/components/cartCard/CardCart";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
     components: {
         Navbar,
@@ -1032,8 +1034,10 @@ export default {
     },
     methods: {
         ...mapActions(["addCart", "removeCart"]),
+        ...mapMutations(["setOverlay"]),
         async getProductos() {
             try {
+                this.setOverlay(true)
                 let { data } = await axios("/api/get-productos");
                 for (let index = 0; index < data.length; index++) {
                     const element = data[index];
@@ -1053,6 +1057,7 @@ export default {
                         descuento: 23,
                     });
                 }
+                this.setOverlay(false)
             } catch (error) {
                 console.log(error);
             }
