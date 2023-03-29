@@ -28,6 +28,7 @@ Route::delete('/delete-proveedor/{id}', 'ProveedorController@destroy')->name('de
 // producto
 Route::get('/get-productos', 'ProductoController@index')->name('get.productos');
 Route::get('/get-producto/{id}', 'ProductoController@indexProducto')->name('get.producto');
+Route::get('/get-producto-by-search/{palabraClave}', 'ProductoController@indexProductosBySearch')->name('search.productos');
 Route::post('/add-producto-masivamente', 'ProductoController@storeMasivo')->name('add.producto.masivo');
 Route::post('/add-producto', 'ProductoController@store')->name('add.producto');
 Route::put('/update-producto/{id}', 'ProductoController@update')->name('update.producto');

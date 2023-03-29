@@ -8,18 +8,18 @@
                 <div class="d-flex justify-space-between align-center">
                     <v-toolbar-title>
                         <v-img class="me-2 logo d-md-none d-block" width="98" src="../assets/images/logo.svg" />
-                        <!-- <div class="mr-2 d-md-block d-none">
+                        <div class="mr-2 d-md-block d-none">
                             <v-icon class="mr-2 white--text" small>mdi-phone-outline</v-icon>
                             <span class="text-sm mr-5">+9012 3456 789</span>
                             <v-icon class="mr-2 white--text" small>mdi-phone-outline</v-icon>
                             <span class="text-sm">+9012 3456 7</span>
-                        </div> -->
+                        </div>
                     </v-toolbar-title>
                     <v-toolbar-title>
-                        <!-- <span class="white--text text-sm mr-5 d-md-inline-block d-none">Theme FAQ's</span> -->
-                        <!-- <span class="white--text text-sm mr-5 d-md-inline-block d-none">Need Help ?</span> -->
+                        <span class="white--text text-sm mr-5 d-md-inline-block d-none">Theme FAQ's</span>
+                        <span class="white--text text-sm mr-5 d-md-inline-block d-none">Need Help ?</span>
 
-                        <!-- <v-menu offset-y>
+                        <v-menu offset-y>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="transparent" dark v-bind="attrs" v-on="on" small>
                                     <v-avatar tile size="14" class="mr-2">
@@ -50,7 +50,7 @@
                                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
-                        </v-menu> -->
+                        </v-menu>
                     </v-toolbar-title>
                 </div>
             </v-container>
@@ -61,7 +61,7 @@
                     style="justify-content: space-between !important; display: flex !important;">
                     <v-toolbar-title class="d-flex align-center">
                         <router-link to="/">
-                            <v-img class="me-2 logo d-md-block d-none" width="98" src="../assets/images/logo.svg"
+                            <v-img class="me-2 logo d-md-block d-none" width="98" src="../../../../images/logoTest.jpeg"
                                 alt=""></v-img>
                         </router-link>
                         <div class="dropdown-ecommerce">
@@ -69,16 +69,9 @@
                         </div>
                     </v-toolbar-title>
                     <v-col cols="12" md="7">
-                        <div v-if="$route.path == '/home-two'" class="search-bar d-flex p-relative">
-                            <v-text-field class="" placeholder="Searching For" filled rounded hide-details dense
-                                prepend-inner-icon="mdi-magnify"></v-text-field>
-                            <v-btn color="primary" class="text-capitalize search-bar-dropdown px-10 font-600">
-                                Search
-                            </v-btn>
-                        </div>
-
-                        <div v-else class="search-bar d-flex p-relative">
-                            <v-text-field class="" placeholder="Searching For" filled rounded dense
+                        <div class="search-bar d-flex p-relative">
+                            <v-text-field v-model="palabra_clave_busqueda_producto" @keypress.enter="searchProducto"
+                                placeholder="Buscar Producto" filled rounded dense
                                 prepend-inner-icon="mdi-magnify"></v-text-field>
                             <v-menu offset-y>
                                 <template v-slot:activator="{ on, attrs }">
@@ -234,12 +227,13 @@
         <v-app-bar class="navbar white" :class="{ 'd-none': $route.path == '/sale-page-two' }">
             <div class="container">
                 <div class="d-flex justify-space-between align-center">
-                    <v-btn elevation="" color="grey lighten-2" class="text-capitalize"  @click="toggleNavbar">
+                    <v-btn elevation="" color="grey lighten-2" class="text-capitalize" @click="toggleNavbar">
                         <v-icon left> mdi-view-dashboard </v-icon>
                         Categories
                         <v-icon right> mdi-chevron-down </v-icon>
                     </v-btn>
-                    <div id="navbar-toggle-dropdown" class="navbar-toggle-dropdown p-absolute" :class="{ open: isToggleNavbar }">
+                    <div id="navbar-toggle-dropdown" class="navbar-toggle-dropdown p-absolute"
+                        :class="{ open: isToggleNavbar }">
                         <Navbar />
                     </div>
                     <div>
@@ -507,6 +501,7 @@ export default {
             itemTwo: ["Foo", "Bar", "Fizz", "Buzz"],
             drawer: false,
             group: null,
+            palabra_clave_busqueda_producto: ''
         }
     },
     components: {
@@ -523,11 +518,27 @@ export default {
             return total;
         }
     },
+    mounted(){
+        this.$route.params.palabra_clave
+        if(this.$route.params.palabra_clave.length > 0){
+            this.searchProducto()
+        }
+    },  
     methods: {
-        ...mapActions(["addCart", "removeCart"]),
-
+        ...mapActions(["addCart", "removeCart", "getProductosBySearch"]),
+        async searchProducto() {
+            await this.getProductosBySearch(this.palabra_clave_busqueda_producto == '' ? this.$route.params.palabra_clave : this.palabra_clave_busqueda_producto);
+            // if (this.$route.name != "home.buscar.productos") {
+                this.$router.push({
+                    name: "home.buscar.productos",
+                    params: { palabra_clave: this.palabra_clave_busqueda_producto },
+                });
+            // } else {
+            //     this.$route.params.palabra_clave = this.palabra_clave_busqueda_producto;
+            // }
+        },
         toggleNavbar() {
-                this.isToggleNavbar = !this.isToggleNavbar;
+            this.isToggleNavbar = !this.isToggleNavbar;
         },
         away() {
             this.isToggleNavbar = false;

@@ -16,7 +16,7 @@
                 Fusce commodo aliquam arcu. Pellentesque posuere. Phasellus tempus. Donec posuere vulputate arcu.
             </v-alert>
         </v-container>
-        <m-footer/>
+        <m-footer />
     </v-app>
 </template>
 <script>
@@ -39,9 +39,19 @@ export default {
             }, 2000); // 5000 ms = 5 seconds
         }
     },
+    watch: {
+        '$route'(to, from) {
+            this.scrollTop()
+        }
+    },
     components: {
         "m-header": Mheader,
         "m-footer": MFooter
+    },
+    methods: {
+        scrollTop() {
+            window.scrollTo(0, 0)
+        }
     }
 }
 </script>

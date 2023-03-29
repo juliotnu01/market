@@ -33,6 +33,16 @@ class ProductoController extends Controller
             throw $th;
         }
     }
+    public function indexProductosBySearch($palabraClave)
+    {
+        try {
+            // dd($palabraClave);
+            $productos = Productos::where('nombre',"LIKE","%$palabraClave%")->get();
+            return response()->json($productos);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -85,25 +95,25 @@ class ProductoController extends Controller
     {
         try {
             return DB::transaction(function () use ($request) {
-                Storage::disk('public')->putFileAs(Carbon::now()->format('Y-m-d'),$request->file('imagen'),$request->file("imagen")->getClientOriginalName());
-                $url = Storage::disk('public')->url(Carbon::now()->format('Y-m-d')."/".$request->file("imagen")->getClientOriginalName());
-                    $producto = new Productos();
-                    $producto->create([
-                        'categoria' => $request["categoria"],
-                        'descripcion_corta' => $request["descripcion_corta"],
-                        'descripcion' => $request["descripcion"],
-                        'destacaado' => $request["destacado"],
-                        'imagen' => asset($url),
-                        'nombre' => $request["nombre"],
-                        'precio_normal' => $request["precio_normal"],
-                        'sku' => $request["sku"],
-                        'tipo' => $request["tipo"],
-                        'proveedor_id' => $request['proveedor']
-                    ]);
-                
+                Storage::disk('public')->putFileAs(Carbon::now()->format('Y-m-d'), $request->file('imagen'), $request->file("imagen")->getClientOriginalName());
+                $url = Storage::disk('public')->url(Carbon::now()->format('Y-m-d') . "/" . $request->file("imagen")->getClientOriginalName());
+                $producto = new Productos();
+                $producto->create([
+                    'categoria' => $request["categoria"],
+                    'descripcion_corta' => $request["descripcion_corta"],
+                    'descripcion' => $request["descripcion"],
+                    'destacaado' => $request["destacado"],
+                    'imagen' => asset($url),
+                    'nombre' => $request["nombre"],
+                    'precio_normal' => $request["precio_normal"],
+                    'sku' => $request["sku"],
+                    'tipo' => $request["tipo"],
+                    'proveedor_id' => $request['proveedor']
+                ]);
+
                 return response(["mensaje" => "Productos guardados con exito"], 200);
             }, 5);
-        } catch(\Throwable $th) {
+        } catch (\Throwable $th) {
             throw $th;
         }
     }
@@ -140,26 +150,26 @@ class ProductoController extends Controller
     public function update(Request $request, Productos $producto, $id)
     {
         try {
-            
+
             return DB::transaction(function () use ($request, $producto, $id) {
                 // Storage::disk('public')->putFileAs(Carbon::now()->format('Y-m-d'), $request->file('imagen'), $request->file("imagen")->getClientOriginalName());
                 // $url = Storage::disk('public')->url(Carbon::now()->format('Y-m-d')."/".$request->file("imagen")->getClientOriginalName());
 
-                    $producto->find($id)->update([
-                        'categoria' => $request["categoria"],
-                        'descripcion_corta' => $request["descripcion_corta"],
-                        'descripcion' => $request["descripcion"],
-                        'destacaado' => $request["destacado"],
-                        // 'imagen' => asset($url),
-                        'nombre' => $request["nombre"],
-                        'precio_normal' => $request["precio_normal"],
-                        'sku' => $request["sku"],
-                        'tipo' => $request["tipo"],
-                    ]);
-                
+                $producto->find($id)->update([
+                    'categoria' => $request["categoria"],
+                    'descripcion_corta' => $request["descripcion_corta"],
+                    'descripcion' => $request["descripcion"],
+                    'destacaado' => $request["destacado"],
+                    // 'imagen' => asset($url),
+                    'nombre' => $request["nombre"],
+                    'precio_normal' => $request["precio_normal"],
+                    'sku' => $request["sku"],
+                    'tipo' => $request["tipo"],
+                ]);
+
                 return response(["mensaje" => "Producto actualizado con exito"], 200);
             }, 5);
-        } catch(\Throwable $th) {
+        } catch (\Throwable $th) {
             throw $th;
         }
     }
@@ -174,7 +184,7 @@ class ProductoController extends Controller
     {
         try {
             $producto->find($id)->delete();
-            return response(["mensaje"=>"Producto eliminado con exito"], 200);
+            return response(["mensaje" => "Producto eliminado con exito"], 200);
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -15,8 +15,8 @@
                                     </v-col>
                                     <v-col cols="12" xl="8">
                                         <p class="secondary--text banner-text mb-4">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat
-                                            eu, quam etiam at quis ut convallis.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
+                                            lobortis consequat eu, quam etiam at quis ut convallis.
                                         </p>
                                     </v-col>
                                     <v-btn color="primary" class="text-capitalize ms-3">Shop Now</v-btn>
@@ -31,7 +31,7 @@
             </v-col>
         </v-row>
         <v-row class="">
-            <!-- <v-col cols="12" lg="12">
+            <v-col cols="12" lg="4">
                 <base-card class="h-100">
                     <VueSlickCarousel class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettingsSingleItem">
                         <div v-for="item in 3" :key="item" class="px-4 pt-4">
@@ -41,12 +41,13 @@
                                     <p class="text-14 grey--text text--darken-2 mb-6">
                                         Starting at $39 & save upto 40%
                                     </p>
-                                    <router-link to="/" class=" d-inline-block bb-primary text-decoration-none black--text font-600">
+                                    <router-link to="/"
+                                        class="d-inline-block bb-primary text-decoration-none black--text font-600">
                                         SHOP NOW
                                     </router-link>
                                 </v-col>
                             </v-row>
-                            <v-img contain src="../../assets/images/products/Rectangle 130.png" />
+                            <v-img contain src="../../../../images/products/Rectangle 130.png" />
                         </div>
 
                         <template #prevArrow="arrowOption">
@@ -67,8 +68,8 @@
                         </template>
                     </VueSlickCarousel>
                 </base-card>
-            </v-col> -->
-            <v-col cols="12" lg="12">
+            </v-col>
+            <v-col cols="12" lg="8">
                 <!-- <h2 class="mb-0">Top Picks</h2> -->
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
@@ -99,17 +100,10 @@
                         </v-btn>
                     </template>
                 </VueSlickCarousel>
-                <!-- <base-card cardHoverShadow class="mb-6">
-                    <div class="
-                        px-8
-                        py-4
-                        d-flex
-                        flex-wrap flex-sm-nowrap
-                        align-center
-                        justify-sm-space-odd justify-center
-                      ">
+                <base-card cardHoverShadow class="mb-6">
+                    <div class="px-8 py-4 d-flex flex-wrap flex-sm-nowrap align-center justify-sm-space-odd justify-center">
                         <div>
-                            <v-img max-width="290" class="mx-auto" src="../../assets/images/products/shoes-1.png">
+                            <v-img max-width="290" class="mx-auto" src="../../../../images/products/shoes-1.png">
                             </v-img>
                         </div>
                         <div class="">
@@ -117,15 +111,10 @@
                             <p class="grey--text text--darken-2 mb-4">
                                 Get the most exciting deals. Starting at $59
                             </p>
-                            <a href="#" class="
-                            text-decoration-none
-                            black--text
-                            bb-primary
-                            font-weight-bold
-                          ">SHOP NOW</a>
+                            <a href="#" class="text-decoration-none black--text bb-primary font-weight-bold">SHOP NOW</a>
                         </div>
                     </div>
-                </base-card> -->
+                </base-card>
 
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
@@ -159,13 +148,13 @@
             </v-col>
         </v-row>
         <v-row>
-            <!-- <v-col cols="12" class="pb-0">
+            <v-col cols="12" class="pb-0">
                 <h2 class="mb-0">Featured Categories</h2>
             </v-col>
             <v-col cols="12" lg="4" class="mb-4">
                 <router-link to="/single-product" class="text-decoration-none">
                     <base-card cardHoverShadow class="p-relative h-100 d-flex align-center">
-                        <v-img contain src="../../assets/images/products/dslr-camera.png"></v-img>
+                        <v-img contain src="../../../../images/products/dslr-camera.png"></v-img>
                         <h3 class="text-uppercase p-absolute bottom-0 ma-5">camera</h3>
                     </base-card>
                 </router-link>
@@ -177,7 +166,7 @@
                             <base-card cardHoverShadow>
                                 <div class="pa-5">
                                     <v-img max-width="280" class="mx-auto mb-5"
-                                        src="../../assets/images/products/ps4.png"></v-img>
+                                        src="../../../../images/products/ps4.png"></v-img>
                                     <h5 class="font-600">GAMING</h5>
                                 </div>
                             </base-card>
@@ -188,7 +177,7 @@
                             <base-card cardHoverShadow>
                                 <div class="pa-5">
                                     <v-img max-width="280" class="mx-auto mb-5"
-                                        src="../../assets/images/products/apple-watch-4.png"></v-img>
+                                        src="../../../../images/products/apple-watch-4.png"></v-img>
                                     <h5 class="font-600">WATCH</h5>
                                 </div>
                             </base-card>
@@ -199,7 +188,7 @@
                             <base-card cardHoverShadow>
                                 <div class="pa-5">
                                     <v-img max-width="280" class="mx-auto mb-5"
-                                        src="../../assets/images/products/drone.png"></v-img>
+                                        src="../../../../images/products/drone.png"></v-img>
                                     <h5 class="font-600">DRONE</h5>
                                 </div>
                             </base-card>
@@ -210,7 +199,7 @@
                             <base-card cardHoverShadow>
                                 <div class="pa-5">
                                     <v-img max-width="280" class="mx-auto mb-5"
-                                        src="../../assets/images/products/phone.png"></v-img>
+                                        src="../../../../images/products/phone.png"></v-img>
                                     <h5 class="font-600">PHONE</h5>
                                 </div>
                             </base-card>
@@ -220,48 +209,44 @@
             </v-col>
             <v-col cols="12" lg="6" class="mb-4">
                 <base-card cardHoverShadow>
-                    <div class="px-8">
+                    <div class="px-8" @click.prevent="$router.push({name: 'home.buscar.productos'})" >
                         <v-row align="center">
                             <v-col cols="12" lg="6">
-                                <h3 class="mb-2">
-                                    Big Saves on Home Decoration. Save Upto 80%
-                                </h3>
+                                <h3 class="mb-2">Big Saves on Home Decoration. Save Upto 80%</h3>
                                 <p class="text-14 grey--text text--darken-2 mb-6">
                                     Easy payment policy, 12 months 0% in interest.
                                 </p>
-                                <router-link to="/" class="text-decoration-none bb-primary black--text font-600">
+                                <router-link :to="{name: 'home.buscar.productos'}"  class="text-decoration-none bb-primary black--text font-600">
                                     SHOP NOW
                                 </router-link>
                             </v-col>
                             <v-col cols="12" lg="6">
-                                <v-img height="292" contain src="../../assets/images/products/tableChair.png"></v-img>
+                                <v-img height="292" contain src="../../../../images/products/tableChair.png"></v-img>
                             </v-col>
                         </v-row>
                     </div>
                 </base-card>
             </v-col>
             <v-col cols="12" lg="6" class="mb-4">
-                <base-card cardHoverShadow class="grey darken-1 white--text">
-                    <div class="px-8">
+                <base-card cardHoverShadow class="grey darken-1 white--text" >
+                    <div class="px-8" @click.prevent="$router.push({name: 'home.buscar.productos'})">
                         <v-row align="center">
                             <v-col cols="12" lg="6">
-                                <h3 class="mb-2">
-                                    Big Saves on Home Decoration. Save Upto 80%
-                                </h3>
+                                <h3 class="mb-2">Big Saves on Home Decoration. Save Upto 80%</h3>
                                 <p class="text-14 grey--text text--lighten-1 mb-6">
                                     Easy payment policy, 12 months 0% in interest.
                                 </p>
-                                <router-link to="/" class="text-decoration-none bb-primary white--text font-600">
+                                <router-link :to="{name: 'home.buscar.productos'}" class="text-decoration-none bb-primary white--text font-600">
                                     SHOP NOW
                                 </router-link>
                             </v-col>
                             <v-col cols="12" lg="6">
-                                <v-img height="292" contain src="../../assets/images/products/outfit.png"></v-img>
+                                <v-img height="292" contain src="../../../../images/products/outfit.png"></v-img>
                             </v-col>
                         </v-row>
                     </div>
                 </base-card>
-            </v-col> -->
+            </v-col>
 
             <v-col cols="12" class="pb-0">
                 <!-- <h2 class="mb-0">Most Viewed</h2> -->
@@ -297,7 +282,8 @@
                 <!-- <h2 class="mb-0">New Arrivals</h2> -->
             </v-col>
             <v-col cols="12" class="px-0">
-                <VueSlickCarousel v-if="flashDeals.length > 0"  class="slick-secondary" :arrows="true" :dots="false" v-bind="slickSettingsSixItem">
+                <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
+                    v-bind="slickSettingsSixItem">
                     <v-col cols="12" v-for="(n, index) in flashDeals" :key="index">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="n.img"></v-img>
 
@@ -392,14 +378,14 @@
 <script>
 import Navbar from "../../components/navbar.vue";
 import CardCart from "../../assets/components/cartCard/CardCart";
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 export default {
     components: {
         Navbar,
         CardCart,
     },
     computed: {
-        ...mapGetters(['getProducts']),
+        ...mapGetters(["getProducts"]),
     },
     data() {
         return {
@@ -1048,25 +1034,30 @@ export default {
         ...mapActions(["addCart", "removeCart"]),
         async getProductos() {
             try {
-                let { data } = await axios('/api/get-productos')
+                let { data } = await axios("/api/get-productos");
                 for (let index = 0; index < data.length; index++) {
                     const element = data[index];
-                    //         {
-                    //   id: 1,
-                    //   img: require("../assets/images/products/flash-1.png"),
-                    //   title: 'Sneakers',
-                    //   category: 'Sneakers',
-                    //   amount: 300,
-                    //   rating: 3,
-                    //   qty: 0
-                    // },
-                    this.flashDeals.push({ id: element.id, price: element.precio_normal , category: element.categoria, amount: element.precio_normal, qty: 0, title: element.nombre ?? '', img: element.imagen == '' || element.imagen == null ? 'https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png' : element.imagen, name: element.nombre ?? '', precio: element.precio_normal ?? 999, descuento: 23 })
+                    this.flashDeals.push({
+                        id: element.id,
+                        price: element.precio_normal,
+                        category: element.categoria,
+                        amount: element.precio_normal,
+                        qty: 0,
+                        title: element.nombre ?? "",
+                        img:
+                            element.imagen == "" || element.imagen == null
+                                ? "https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png"
+                                : element.imagen,
+                        name: element.nombre ?? "",
+                        precio: element.precio_normal ?? 999,
+                        descuento: 23,
+                    });
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>
@@ -1075,4 +1066,5 @@ export default {
             rgb(255, 255, 255, 1),
             rgb(255, 255, 255, 0.9),
             rgb(255, 255, 255, 0));
-}</style>
+}
+</style>
