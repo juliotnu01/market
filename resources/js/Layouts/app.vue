@@ -12,6 +12,7 @@
             </v-alert>
         </v-container>
         <m-footer />
+        <m-mobile/>
         <v-overlay :value="openOverlay">
             <v-progress-circular :size="70" :width="7" color="purple" />
         </v-overlay>
@@ -20,6 +21,7 @@
 <script>
 import Mheader from '../components/header.vue'
 import MFooter from '../components/Footer.vue'
+import MMobile from './MobileNavigationBar.vue'
 import { mapGetters, mapMutations } from "vuex";
 export default {
     data() {
@@ -55,7 +57,8 @@ export default {
     },
     components: {
         "m-header": Mheader,
-        "m-footer": MFooter
+        "m-footer": MFooter,
+        "m-mobile": MMobile,
     },
     methods: {
         scrollTop() {
