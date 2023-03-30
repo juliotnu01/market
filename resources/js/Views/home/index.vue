@@ -73,8 +73,9 @@
                 <!-- <h2 class="mb-0">Top Picks</h2> -->
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
-                        <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
+                        <v-img 
+                            class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
@@ -118,7 +119,7 @@
 
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
@@ -256,7 +257,7 @@
             <v-col cols="12" class="px-0">
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
                     v-bind="slickSettings">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
                         <CardCart :content-img="item.img" :content-text="item.title" :counter="item.qty" class="m-5"
                             @cartRemove="removeCart(item)" @cartAdd="addCart(item)" />
                     </v-col>
@@ -286,7 +287,7 @@
             <v-col cols="12" class="px-0">
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
                     v-bind="slickSettingsSixItem">
-                    <v-col cols="12" v-for="(n, index) in flashDeals" :key="index">
+                    <v-col cols="12" v-for="(n, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="n.img"></v-img>
 
                         <h5 class="mb-1">{{ n.title }}</h5>

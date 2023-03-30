@@ -806,6 +806,16 @@ var render = function render() {
       key: index,
       attrs: {
         cols: "12"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.$router.push({
+            name: "home.productos.unico",
+            params: {
+              id: item.id
+            }
+          });
+        }
       }
     }, [_c("v-img", {
       staticClass: "mb-4 br-8 card-overlay-item",
@@ -899,6 +909,16 @@ var render = function render() {
       key: index,
       attrs: {
         cols: "12"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.$router.push({
+            name: "home.productos.unico",
+            params: {
+              id: item.id
+            }
+          });
+        }
       }
     }, [_c("v-img", {
       staticClass: "mb-4 br-8 card-overlay-item",
@@ -1215,6 +1235,16 @@ var render = function render() {
       key: index,
       attrs: {
         cols: "12"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.$router.push({
+            name: "home.productos.unico",
+            params: {
+              id: item.id
+            }
+          });
+        }
       }
     }, [_c("CardCart", {
       staticClass: "m-5",
@@ -1288,6 +1318,16 @@ var render = function render() {
       key: index,
       attrs: {
         cols: "12"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.$router.push({
+            name: "home.productos.unico",
+            params: {
+              id: _vm.item.id
+            }
+          });
+        }
       }
     }, [_c("v-img", {
       staticClass: "mb-4 br-8 card-overlay-item",

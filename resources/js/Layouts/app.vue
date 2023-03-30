@@ -12,8 +12,8 @@
             </v-alert>
         </v-container>
         <m-footer />
-        <v-overlay :value="OpenOverlay">
-            <v-progress-circular indeterminate size="64"></v-progress-circular>
+        <v-overlay :value="openOverlay">
+            <v-progress-circular :size="70" :width="7" color="purple" />
         </v-overlay>
     </v-app>
 </template>
@@ -29,14 +29,14 @@ export default {
 
         }
     },
-    computed:{
+    computed: {
         ...mapGetters(['overlay']),
-        OpenOverlay: {
-            get(){
+        openOverlay: {
+            get() {
                 return this.overlay
             },
-            set(val){
-                this.$store.commit('setOverlay', val)
+            set(val) {
+                this.$store.commit('setOverlay', v)
             }
         }
     },

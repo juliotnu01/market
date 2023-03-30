@@ -889,6 +889,7 @@ export const store = new Vuex.Store({
         ],
         itemsBySearch: [],
         overlay: false,
+        singleProduct: {},
     },
     getters: {
         getProducts: (state) => state.products,
@@ -897,9 +898,15 @@ export const store = new Vuex.Store({
         getRatings: (state) => state.ratings,
         itemsBySearch: (state) => state.itemsBySearch,
         overlay: (state) => state.overlay,
+        singleProduct: (state) => state.singleProduct,
     },
     actions: {
-        
+        async getsingleProduct({ commit }, id) {
+            try {
+                let { data }  = await axios(`/api/get-producto/${id}`)
+                commit('setSingleProduct', data)
+            } catch (error) {}
+        },
         async getProductosBySearch({ commit }, dataPalabraSearch) {
             try {
                 let { data } = await axios(
@@ -936,8 +943,11 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
-        setOverlay(state, data){
-            state.overlay = data
+        setSingleProduct(state,data){
+            state.singleProduct = data
+        },
+        setOverlay(state, data) {
+            state.overlay = data;
         },
         setItemsBySarch(state, data) {
             if (data.length != []) {

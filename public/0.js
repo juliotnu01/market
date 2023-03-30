@@ -21,7 +21,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   props: {
     btnText: {
       type: String,
-      "default": ''
+      "default": ""
     },
     cardHoverShadow: {
       type: Boolean,
@@ -42,7 +42,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       "default": 4.5
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getProducts'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["getProducts"])),
   data: function data() {
     return {
       dialog: false
@@ -76,7 +76,7 @@ var render = function render() {
       color: "primary",
       small: ""
     }
-  }, [_vm._v("\n       56% off\n     ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" 56% off ")]), _vm._v(" "), _c("div", {
     staticClass: "card-hover-icon"
   }, [_c("div", {
     staticClass: "d-flex flex-column p-absolute right-0 z-1 mr-2 mt-1 card-hover-icon"
@@ -137,13 +137,13 @@ var render = function render() {
     staticClass: "mt-4 mb-4 leading-tight"
   }, [_vm._v("Smart Watch Black")]), _vm._v(" "), _c("h5", {
     staticClass: "grey--text text--darken-5 mb-3"
-  }, [_vm._v("Brand: "), _c("span", {
+  }, [_vm._v("\n                  Brand:\n                  "), _c("span", {
     staticClass: "grey--text text--darken-1 font-weight-medium ml-2"
   }, [_vm._v("Xiaomi")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex mb-3"
   }, [_c("h5", {
     staticClass: "grey--text text--darken-5 mr-2"
-  }, [_vm._v("Rated: ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Rated:")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex mb-1"
   }, [_c("v-rating", {
     attrs: {
@@ -156,13 +156,13 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "grey--text text--darken-1 font-weight-bold ml-1"
-  }, [_vm._v("\n                                           (50)\n                                       ")])], 1)]), _vm._v(" "), _c("h2", {
+  }, [_vm._v("\n                      (50)\n                    ")])], 1)]), _vm._v(" "), _c("h2", {
     staticClass: "font-weight-bold primary--text mb-2"
   }, [_vm._v("$250.00")]), _vm._v(" "), _c("h5", {
     staticClass: "font-weight-light mb-3"
   }, [_vm._v("Stock Available")]), _vm._v(" "), _c("h5", {
     staticClass: "grey--text text--darken-5 mb-3"
-  }, [_vm._v("Sold By: "), _c("span", {
+  }, [_vm._v("\n                  Sold By:\n                  "), _c("span", {
     staticClass: "grey--text text--darken-1 font-weight-medium ml-2"
   }, [_vm._v("Mobile Store")])])])], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-btn", {
     attrs: {
@@ -190,7 +190,7 @@ var render = function render() {
     }
   }, [_c("h6", {
     staticClass: "mb-0 grey--text text--darken-4"
-  }, [_vm._v(_vm._s(_vm.contentText) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.contentText))])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex mb-1"
   }, [_c("v-rating", {
     attrs: {
@@ -204,7 +204,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "grey--text ml-1"
-  }, [_vm._v("\n             " + _vm._s(_vm.contentRating) + " \n           ")])], 1), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n          " + _vm._s(_vm.contentRating) + "\n        ")])], 1), _vm._v(" "), _c("div", {
     staticClass: "d-flex"
   }, [_c("h6", {
     staticClass: "primary--text mr-2 mb-0"
@@ -230,7 +230,7 @@ var render = function render() {
   }, [_c("v-icon", [_vm._v("mdi-minus")])], 1), _vm._v(" "), _c("div", {
     staticClass: "text-center font-weight-bold",
     "class": _vm.counter <= 0 ? "d-none" : "d-block"
-  }, [_vm._v(_vm._s(_vm.counter))]), _vm._v(" "), _c("v-btn", {
+  }, [_vm._v("\n        " + _vm._s(_vm.counter) + "\n      ")]), _vm._v(" "), _c("v-btn", {
     staticClass: "rounded",
     attrs: {
       outlined: "",
