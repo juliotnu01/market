@@ -70,8 +70,8 @@
                     </v-toolbar-title>
                     <v-col cols="12" md="7">
                         <div class="search-bar d-flex p-relative">
-                            <v-text-field v-model="palabra_clave_busqueda_producto" @keypress.enter="searchProducto"
-                                placeholder="Buscar Producto" filled rounded dense
+                            <v-text-field v-model="computed_palabra_clave_busqueda_producto"
+                                @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
                                 prepend-inner-icon="mdi-magnify"></v-text-field>
                             <v-menu offset-y>
                                 <template v-slot:activator="{ on, attrs }">
@@ -501,7 +501,6 @@ export default {
             itemTwo: ["Foo", "Bar", "Fizz", "Buzz"],
             drawer: false,
             group: null,
-            palabra_clave_busqueda_producto: ''
         }
     },
     components: {
@@ -509,7 +508,15 @@ export default {
         Navbar,
     },
     computed: {
-        ...mapGetters(['getCartProducts']),
+        ...mapGetters(['getCartProducts', 'palabra_clave_busqueda_producto']),
+        computed_palabra_clave_busqueda_producto: {
+            get() {
+                return this.palabra_clave_busqueda_producto
+            },
+            set(val) {
+                this.$store.commit('setpalabra_clave_busqueda_producto', val)
+            }
+        },
         cartTotal() {
             let total = 0;
             this.getCartProducts.forEach(product => {
@@ -518,23 +525,18 @@ export default {
             return total;
         }
     },
-    mounted(){
-        if(this.$route.params.name == 'home.buscar.productos'){
-            this.searchProducto()
-        }
-    },  
+    mounted() {
+
+    },
     methods: {
-        ...mapActions(["addCart", "removeCart", "getProductosBySearch"]),
+        ...mapActions(["addCart", "removeCart"]),
         async searchProducto() {
-            await this.getProductosBySearch(this.palabra_clave_busqueda_producto == '' ? this.$route.params.palabra_clave : this.palabra_clave_busqueda_producto);
-            // if (this.$route.name != "home.buscar.productos") {
-                this.$router.push({
-                    name: "home.buscar.productos",
-                    params: { palabra_clave: this.palabra_clave_busqueda_producto },
-                });
-            // } else {
-            //     this.$route.params.palabra_clave = this.palabra_clave_busqueda_producto;
-            // }
+            await this.$store.dispatch('getProductosBySearch', this.computed_palabra_clave_busqueda_producto);
+            await this.$store.commit('setpalabra_clave_busqueda_producto', this.computed_palabra_clave_busqueda_producto);
+            this.$router.push({
+                name: "home.buscar.productos",
+                params: { palabra_clave: this.computed_palabra_clave_busqueda_producto },
+            });
         },
         toggleNavbar() {
             this.isToggleNavbar = !this.isToggleNavbar;

@@ -559,7 +559,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     getProductos: function getProductos() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _yield$axios, data, index, _element$nombre, _element$nombre2, _element$precio_norma, element;
+        var _yield$axios, data, index, _element$precio_norma, _element$precio_norma2, _element$nombre, _element$nombre2, _element$precio_norma3, element;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -574,14 +574,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
                 element = data[index];
                 _this.flashDeals.push({
                   id: element.id,
-                  price: element.precio_normal,
+                  price: parseInt((_element$precio_norma = element.precio_normal) !== null && _element$precio_norma !== void 0 ? _element$precio_norma : 999),
                   category: element.categoria,
-                  amount: element.precio_normal,
+                  amount: parseInt((_element$precio_norma2 = element.precio_normal) !== null && _element$precio_norma2 !== void 0 ? _element$precio_norma2 : 999),
                   qty: 0,
                   title: (_element$nombre = element.nombre) !== null && _element$nombre !== void 0 ? _element$nombre : "",
                   img: element.imagen == "" || element.imagen == null ? "https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png" : element.imagen,
                   name: (_element$nombre2 = element.nombre) !== null && _element$nombre2 !== void 0 ? _element$nombre2 : "",
-                  precio: (_element$precio_norma = element.precio_normal) !== null && _element$precio_norma !== void 0 ? _element$precio_norma : 999,
+                  precio: parseInt((_element$precio_norma3 = element.precio_normal) !== null && _element$precio_norma3 !== void 0 ? _element$precio_norma3 : 999),
                   descuento: 23
                 });
               }
@@ -1180,11 +1180,6 @@ var render = function render() {
       src: "../../../../images/products/outfit.png"
     }
   })], 1)], 1)], 1)])], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "pb-0",
-    attrs: {
-      cols: "12"
-    }
-  }), _vm._v(" "), _c("v-col", {
     staticClass: "px-0",
     attrs: {
       cols: "12"
@@ -1235,22 +1230,14 @@ var render = function render() {
       key: index,
       attrs: {
         cols: "12"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.$router.push({
-            name: "home.productos.unico",
-            params: {
-              id: item.id
-            }
-          });
-        }
       }
     }, [_c("CardCart", {
-      staticClass: "m-5",
       attrs: {
+        idItem: item.id,
         "content-img": item.img,
         "content-text": item.title,
+        amount: item.amount,
+        contentRating: item.rating,
         counter: item.qty
       },
       on: {
@@ -1263,11 +1250,6 @@ var render = function render() {
       }
     })], 1);
   }), 1) : _vm._e()], 1), _vm._v(" "), _c("v-col", {
-    staticClass: "pb-0",
-    attrs: {
-      cols: "12"
-    }
-  }), _vm._v(" "), _c("v-col", {
     staticClass: "px-0",
     attrs: {
       cols: "12"

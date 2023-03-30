@@ -21,23 +21,30 @@ export default new router({
             component: () => import("../Views/productos/index.vue"),
         },
         {
-            path: "/producto/:id",
+            path: "/producto/:id?",
             name: "home.productos.unico",
             component: () => import("../Views/producto/SingleProduct.vue"),
             async beforeEnter(to, from, next) {
                 const id = to.params.id;
                 await store.dispatch('getsingleProduct', id)
-                console.log(store.getters.singleProduct)
-                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0,7))
+                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0,10))
+                console.log({ sinP: store.getters.singleProduct })
+                next(true)
+            },
+            async beforeRouteUpdate(to, from, next) {
+                const id = to.params.id;
+                await store.dispatch('getsingleProduct', id)
+                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0,10))
+                console.log({ sinP: store.getters.singleProduct })
                 next()
             },
         },
         {
-            path: "/buscar-productos/:palabra_clave",
+            path: "/buscar-productos/:palabra_clave?",
             name: "home.buscar.productos",
             component: () =>
                 import("../Views/buscarProducto/SearchProduct.vue"),
-            beforeRouteUpdate(to, from, next) {
+            async beforeRouteUpdate(to, from, next) {
                 if (to.path === from.path) {
                     next(false);
                 } else {

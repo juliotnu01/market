@@ -73,9 +73,9 @@
                 <!-- <h2 class="mb-0">Top Picks</h2> -->
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
-                        <v-img 
-                            class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index"
+                        @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
+                        <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
@@ -119,7 +119,8 @@
 
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary mb-6" :arrows="true" :dots="false"
                     v-bind="slickSettingsFour">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
+                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index"
+                        @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="item.img"></v-img>
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
@@ -250,17 +251,22 @@
                     </div>
                 </base-card>
             </v-col>
-
-            <v-col cols="12" class="pb-0">
-                <!-- <h2 class="mb-0">Most Viewed</h2> -->
-            </v-col>
             <v-col cols="12" class="px-0">
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
                     v-bind="slickSettings">
-                    <v-col cols="12" v-for="(item, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
-                        <CardCart :content-img="item.img" :content-text="item.title" :counter="item.qty" class="m-5"
-                            @cartRemove="removeCart(item)" @cartAdd="addCart(item)" />
-                    </v-col>
+                    <!-- <v-col cols="12" v-for="(item, index) in flashDeals" :key="index">
+                        <CardCart :idItem="item.id" :amount="item.amount" :content-img="item.img" :content-text="item.title"
+                            :counter="item.qty" class="m-5" @cartRemove="removeCart(item)" @cartAdd="addCart(item)" />
+                    </v-col> -->
+                    
+                        <v-col v-for="(item, index) in flashDeals" :key="index" cols="12">
+
+                            <CardCart :idItem="item.id" :content-img="item.img" :content-text="item.title"
+                                :amount="item.amount" :contentRating="item.rating" :counter="item.qty"
+                                @cartRemove="removeCart(item)" @cartAdd="addCart(item)">
+                            </CardCart>
+                        </v-col>
+                    
 
                     <template #prevArrow="arrowOption">
                         <v-btn class="mx-2 slick-arrow prev slick-prev" fab dark small color="secondary">
@@ -280,14 +286,11 @@
                     </template>
                 </VueSlickCarousel>
             </v-col>
-
-            <v-col cols="12" class="pb-0">
-                <!-- <h2 class="mb-0">New Arrivals</h2> -->
-            </v-col>
             <v-col cols="12" class="px-0">
                 <VueSlickCarousel v-if="flashDeals.length > 0" class="slick-secondary" :arrows="true" :dots="false"
                     v-bind="slickSettingsSixItem">
-                    <v-col cols="12" v-for="(n, index) in flashDeals" :key="index" @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
+                    <v-col cols="12" v-for="(n, index) in flashDeals" :key="index"
+                        @click="$router.push({ name: 'home.productos.unico', params: { id: item.id } })">
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="n.img"></v-img>
 
                         <h5 class="mb-1">{{ n.title }}</h5>
@@ -312,69 +315,6 @@
                     </template>
                 </VueSlickCarousel>
             </v-col>
-
-            <!-- <v-col cols="12">
-                <base-card card cardHoverShadow>
-                    <v-img cover height="280" src="../../assets/images/products/bg-gradient.png">
-                        <div class="fill-height left-right-gradient d-flex align-center">
-                            <v-row class="ps-5 ps-sm-14 ma-0">
-                                <v-col cols="12" lg="3" class="pa-0 ma-0">
-                                    <h2 class="mb-4">
-                                        Build Your Own Youtube Studio Save Upto 70%
-                                    </h2>
-                                    <p class="grey--text text--darken-3 mb-6">
-                                        Everything you need to create your youtube studio
-                                    </p>
-                                    <router-link to="/" class="text-decoration-none font-600 black--text bb-primary">
-                                        DISCOVER EQUIPMENTS
-                                    </router-link>
-                                </v-col>
-                            </v-row>
-                        </div>
-                    </v-img>
-                </base-card>
-            </v-col> -->
-
-            <!-- <v-col cols="12" lg="6">
-                <v-img class="br-8 mb-6" contain src="../../assets/images/products/photo-1.png"></v-img>
-                <h3 class="font-600 mb-1">Art of Keeping Home Minimal & Organised.</h3>
-                <div class="d-flex flex-wrap mb-4">
-                    <v-icon color="grey darken-1" small class="mr-1">mdi-clock-time-eight-outline</v-icon>
-                    <p class="text-14 mb-0 mr-3 grey--text text--darken-1">
-                        24 February, 2020
-                    </p>
-                    <v-icon color="grey darken-1" small class="mr-1">mdi-clock-time-eight-outline</v-icon>
-                    <p class="text-14 mb-0 mr-3 grey--text text--darken-1">3 Comments</p>
-                </div>
-                <p class="grey--text text--darken-3 mb-3">
-                    Maecenas leo ante, gravida vel lectus ac, iaculis lobortis enim. Proin
-                    nec orci nec nisl consequat molestie quis sit amet elit. Ut venenatis
-                    dignissim diam in auctor.
-                </p>
-                <router-link to="/" class="text-decoration-none font-600 bb-primary black--text">
-                    CONTINUE READING
-                </router-link>
-            </v-col>
-            <v-col cols="12" lg="6">
-                <v-img class="br-8 mb-6" contain src="../../assets/images/products/photo-2.png"></v-img>
-                <h3 class="font-600 mb-1">The Monthly Guide to Cleaning Your Home.</h3>
-                <div class="d-flex flex-wrap mb-4">
-                    <v-icon color="grey darken-1" small class="mr-1">mdi-clock-time-eight-outline</v-icon>
-                    <p class="text-14 mb-0 mr-3 grey--text text--darken-1">
-                        24 February, 2020
-                    </p>
-                    <v-icon color="grey darken-1" small class="mr-1">mdi-clock-time-eight-outline</v-icon>
-                    <p class="text-14 mb-0 mr-3 grey--text text--darken-1">3 Comments</p>
-                </div>
-                <p class="grey--text text--darken-3 mb-3">
-                    Maecenas leo ante, gravida vel lectus ac, iaculis lobortis enim. Proin
-                    nec orci nec nisl consequat molestie quis sit amet elit. Ut venenatis
-                    dignissim diam in auctor.
-                </p>
-                <router-link to="/" class="text-decoration-none font-600 bb-primary black--text">
-                    CONTINUE READING
-                </router-link>
-            </v-col> -->
         </v-row>
     </v-container>
 </template>
@@ -1044,9 +984,9 @@ export default {
                     const element = data[index];
                     this.flashDeals.push({
                         id: element.id,
-                        price: element.precio_normal,
+                        price: parseInt(element.precio_normal ?? 999),
                         category: element.categoria,
-                        amount: element.precio_normal,
+                        amount: parseInt(element.precio_normal ?? 999),
                         qty: 0,
                         title: element.nombre ?? "",
                         img:
@@ -1054,7 +994,7 @@ export default {
                                 ? "https://www.4me.com/wp-content/uploads/2018/01/4me-icon-product.png"
                                 : element.imagen,
                         name: element.nombre ?? "",
-                        precio: element.precio_normal ?? 999,
+                        precio: parseInt(element.precio_normal ?? 999),
                         descuento: 23,
                     });
                 }

@@ -890,6 +890,7 @@ export const store = new Vuex.Store({
         itemsBySearch: [],
         overlay: false,
         singleProduct: {},
+        palabra_clave_busqueda_producto: ''
     },
     getters: {
         getProducts: (state) => state.products,
@@ -899,6 +900,7 @@ export const store = new Vuex.Store({
         itemsBySearch: (state) => state.itemsBySearch,
         overlay: (state) => state.overlay,
         singleProduct: (state) => state.singleProduct,
+        palabra_clave_busqueda_producto: (state) => state.palabra_clave_busqueda_producto,
     },
     actions: {
         async getsingleProduct({ commit }, id) {
@@ -909,6 +911,7 @@ export const store = new Vuex.Store({
         },
         async getProductosBySearch({ commit }, dataPalabraSearch) {
             try {
+                console.log(dataPalabraSearch)
                 let { data } = await axios(
                     `/api/get-producto-by-search/${dataPalabraSearch ?? ""}`
                 );
@@ -943,6 +946,9 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        setpalabra_clave_busqueda_producto(state,data){
+            state.palabra_clave_busqueda_producto = data
+        },
         setSingleProduct(state,data){
             state.singleProduct = data
         },

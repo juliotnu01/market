@@ -1,7 +1,7 @@
 <template>
   <!-- card-hover-shadow  -->
   <base-card class="card-hover" :class="cardHoverShadow ? 'card-hover-shadow' : ''">
-    <v-chip class="ma-2 p-absolute" color="primary" small> 56% off </v-chip>
+    <v-chip class="ma-2 p-absolute" color="primary" small style="z-index: 10001" > 56% off </v-chip>
     <div class="card-hover-icon">
       <div class="d-flex flex-column p-absolute right-0 z-1 mr-2 mt-1 card-hover-icon">
         <!-- dialog -- modal  -->
@@ -71,15 +71,14 @@
             </v-card-text>
           </base-card>
         </v-dialog>
-
         <!-- end dialog end modal  -->
         <v-btn icon color="secondary">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
       </div>
     </div>
-    <router-link to="/single-product">
-      <v-img height="250" class="br-t-8" :src="contentImg"></v-img>
+    <router-link :to="{ name: 'home.productos.unico', params: { id: idItem } }">
+      <v-img height="200" class="br-t-8" :src="contentImg" ></v-img>
     </router-link>
 
     <v-card-text class="d-flex justify-content-between align-end">
@@ -102,8 +101,8 @@
             {{ contentRating }}
           </div>
         </div>
-        <div class="d-flex">
-          <h6 class="primary--text mr-2 mb-0">${{ amount }}</h6>
+        <div>
+          <h6 class="primary--text mr-2 mb-0">${{ amount | numberFormat }}</h6>
           <h6 class="gray--text lighten-4 text-decoration-line-through mb-0">$110.00</h6>
         </div>
       </div>
@@ -168,6 +167,10 @@ export default {
     contentRating: {
       type: Number,
       default: 4.5,
+    },
+    idItem: {
+      type: Number,
+      default: null,
     },
   },
   computed: {

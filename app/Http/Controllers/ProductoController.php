@@ -36,8 +36,11 @@ class ProductoController extends Controller
     public function indexProductosBySearch($palabraClave)
     {
         try {
-            // dd($palabraClave);
-            $productos = Productos::where('nombre',"LIKE","%$palabraClave%")->get();
+            if($palabraClave == ''){
+                $productos = Productos::all();
+            }else{
+                $productos = Productos::where('nombre',"LIKE","%$palabraClave%")->get();
+            }
             return response()->json($productos);
         } catch (\Throwable $th) {
             throw $th;

@@ -1,6 +1,6 @@
 <template>
   <v-card  
-    class="shadow-sm br-8 " 
+    class="shadow-md br-8 " 
     max-width="100%" 
     :class="cardHoverShadow ? 'card-hover-shadow' : '' "
   >

@@ -6,7 +6,7 @@
                     <v-card-text class="ps-6 d-flex justify-space-between align-center flex-wrap">
                         <div class="my-2">
                             <h4 class="">Searching for "{{ $route.params.palabra_clave }}"</h4>
-                            <p class="gray--text text--darken-1 mb-0">{{itemSearch.length}} results found</p>
+                            <p class="gray--text text--darken-1 mb-0">{{ itemSearch.length }} results found</p>
                         </div>
                         <div class="d-flex align-center flex-wrap">
                             <div class="grey--text text--darken-1 me-2 my-2">Sort by :</div>
@@ -14,11 +14,11 @@
                                 @change="relevance('amount')" outlined hide-details flat></v-select>
                             <div class="grey--text text--darken-1 me-2 my-2">View :</div>
                             <v-btn icon>
-                                <img  class="icon" src="../../../../public/images/icons/grid.svg" alt="" />
+                                <img class="icon" src="../../../../public/images/icons/grid.svg" alt="" />
                             </v-btn>
                             <v-btn icon>
                                 <!-- <img  class="icon" src="../../../../../images/icons/menu.svg" alt="" /> -->
-                                <img  class="icon" src="../../../../public/images/icons/menu.svg" alt="" />
+                                <img class="icon" src="../../../../public/images/icons/menu.svg" alt="" />
                             </v-btn>
 
                         </div>
@@ -132,10 +132,10 @@
                         </div>
                         <div class="box-container">
                             <v-row>
-                                <v-col cols="12" v-if="itemSearch.length > 0" >
-                                    
-                                    <v-data-iterator :items="itemSearch" :items-per-page.sync="itemsPerPage" :page.sync="page"
-                                        hide-default-footer>
+                                <v-col cols="12" v-if="itemSearch.length > 0">
+
+                                    <v-data-iterator :items="itemSearch" :items-per-page.sync="itemsPerPage"
+                                        :page.sync="page" hide-default-footer>
 
 
                                         <template v-slot:default="props">
@@ -143,7 +143,7 @@
                                                 <v-col v-for="(item, index) in props.items" :key="index" cols="12" sm="6"
                                                     md="6" lg="4" xl="3">
 
-                                                    <CardCart :content-img="item.img" :content-text="item.title"
+                                                    <CardCart :idItem="item.id" :content-img="item.img" :content-text="item.title"
                                                         :amount="item.amount" :contentRating="item.rating"
                                                         :counter="item.qty" @cartRemove="removeCart(item)"
                                                         @cartAdd="addCart(item)">
@@ -160,7 +160,7 @@
                                                 <v-spacer></v-spacer>
 
                                                 <span class="mr-4
-                                            grey--text">
+                                                grey--text">
                                                     Page {{ page }} of {{ numberOfPages }}
                                                 </span>
                                                 <v-btn fab :disabled="page == 1" small color="primary" class="mr-1"
@@ -179,8 +179,7 @@
 
                                                 <v-spacer></v-spacer>
 
-                                                <span class="mr-4
-                                            grey--text">
+                                                <span class="mr-4 grey--text">
                                                     Page {{ page }} of {{ numberOfPages }}
                                                 </span>
                                                 <v-btn fab :disabled="page == 1" small color="primary" class="mr-1"
@@ -235,10 +234,10 @@ export default {
         },
 
         itemSearch: {
-            get(){
+            get() {
                 return this.itemsBySearch
             },
-            set(val){
+            set(val) {
                 this.$store.commit('setItemsBySarch', val)
             }
         }
@@ -254,7 +253,7 @@ export default {
     },
     methods: {
         ...mapActions(["addCart", "removeCart",]),
-       
+
         relevance(amount) {
 
             if (this.select == 'Low to High') {
