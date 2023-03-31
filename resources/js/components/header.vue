@@ -1,9 +1,6 @@
 <template>
-    <div :class="[
-        { 'sale-page-one': $route.path == '/sale-page-one' },
-        { 'sale-page-two': $route.path == '/sale-page-two' },
-    ]">
-        <div class="secondary white--text top-bar" :class="{ 'd-none': $route.path == '/home-two' }">
+    <div>
+        <div class="secondary white--text top-bar" >
             <v-container>
                 <div class="d-flex justify-space-between align-center">
                     <v-toolbar-title>
@@ -55,21 +52,23 @@
                 </div>
             </v-container>
         </div>
-        <v-app-bar height="72" app scroll-off-screen class="sub-topbar" color="white py-1">
-            <v-container>
-                <div class="d-flex justify-space-between align-center"
-                    style="justify-content: space-between !important; display: flex !important;">
-                    <v-toolbar-title class="d-flex align-center">
-                        <router-link to="/">
-                            <v-img class="me-2 logo d-md-block d-none" width="98" src="../../../../images/logoTest.jpeg"
-                                alt=""></v-img>
-                        </router-link>
-                        <div class="dropdown-ecommerce">
-                            <HeaderNavbar />
-                        </div>
-                    </v-toolbar-title>
-                    <v-col cols="12" md="7">
-                        <div class="search-bar d-flex p-relative">
+        <v-app-bar height="92" app  class="sub-topbar"  color="white py-1">
+            <v-container :class="$vuetify.breakpoint.xs ? 'mt-10': ''">
+                <v-row > 
+                    <v-col cols="6" md="3" sm="6" xs="6" >
+                        <v-toolbar-title class="d-flex align-center">
+                            <router-link to="/">
+                                <v-img  class="me-2 logo d-md-block" width="98" 
+                                        src="../../../../images/logoTest.jpeg"
+                                        alt="" />
+                            </router-link>
+                            <div class="dropdown-ecommerce">
+                                <!-- <HeaderNavbar /> -->
+                            </div>
+                        </v-toolbar-title>
+                    </v-col>
+                    <v-col cols="12" md="6" sm="12" xs="12" v-show="!$vuetify.breakpoint.xs" >
+                        <div class="search-bar d-flex p-relative ">
                             <v-text-field v-model="computed_palabra_clave_busqueda_producto"
                                 @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
                                 prepend-inner-icon="mdi-magnify"></v-text-field>
@@ -89,8 +88,8 @@
                             </v-menu>
                         </div>
                     </v-col>
-                    <div class="">
-                        <div class="d-md-block d-none">
+                    <v-col cols="6" md="3" sm="6" xs="6" align-self="end">
+                        <div class="d-md-block  mr-0" style="float: right;">
                             <v-dialog v-model="dialog" width="500">
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn elevation="0" fab small class="mr-3" color="grey lighten-2" v-bind="attrs"
@@ -154,10 +153,39 @@
                                     <v-icon color="">mdi-cart</v-icon>
                                 </v-btn>
                             </v-badge>
-
                         </div>
+                    </v-col>
+                    <v-col cols="12"  v-show="$vuetify.breakpoint.xs" >
+                        <div class="search-bar d-flex p-relative ">
+                            <v-text-field v-model="computed_palabra_clave_busqueda_producto"
+                                @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
+                                prepend-inner-icon="mdi-magnify"></v-text-field>
+                            <v-menu offset-y>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn color="white" class="text-capitalize search-bar-dropdown" v-bind="attrs"
+                                        v-on="on">
+                                        All Categories
+                                        <v-icon>mdi-chevron-down</v-icon>
+                                    </v-btn>
+                                </template>
+                                <v-list>
+                                    <v-list-item v-for="(item, index) in items" :key="index">
+                                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
+                        </div>
+                    </v-col>
+                </v-row>
+                <!-- <div>
+                    
+                    <v-col cols="12" md="7">
+                        
+                    </v-col>
+                    <div class="">
+                       
                     </div>
-                </div>
+                </div> -->
             </v-container>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" fixed temporary right width="320" class="z-999">
