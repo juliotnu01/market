@@ -150,14 +150,14 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          return _vm.addCartx(n);
+          return _vm.removeCartx(n);
         }
       }
     }, [_c("v-icon", {
       attrs: {
         dark: ""
       }
-    }, [_vm._v(" mdi-plus ")])], 1), _vm._v(" "), _c("div", {
+    }, [_vm._v(" mdi-minus ")])], 1), _vm._v(" "), _c("div", {
       staticClass: "text-center mx-2"
     }, [_vm._v(_vm._s(n.qty))]), _vm._v(" "), _c("v-btn", {
       staticClass: "mx-2",
@@ -170,14 +170,14 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          return _vm.removeCartx(n);
+          return _vm.addCartx(n);
         }
       }
     }, [_c("v-icon", {
       attrs: {
         dark: ""
       }
-    }, [_vm._v(" mdi-minus ")])], 1)], 1)])])], 1)], 1);
+    }, [_vm._v(" mdi-plus ")])], 1)], 1)])])], 1)], 1);
   }), 0), _vm._v(" "), _c("v-col", {
     attrs: {
       cols: "12",

@@ -30,14 +30,14 @@
                                             </div>
                                             <div class="d-flex justify-end flex-grow-1 align-end">
                                                 <div class="d-flex align-center">
-                                                    <v-btn @click="addCartx(n)" class="mx-2" fab outlined dark x-small
-                                                        color="primary">
-                                                        <v-icon dark> mdi-plus </v-icon>
-                                                    </v-btn>
-                                                    <div class="text-center mx-2">{{ n.qty }}</div>
                                                     <v-btn @click="removeCartx(n)" class="mx-2" fab outlined dark x-small
                                                         color="primary">
                                                         <v-icon dark> mdi-minus </v-icon>
+                                                    </v-btn>
+                                                    <div class="text-center mx-2">{{ n.qty }}</div>
+                                                    <v-btn @click="addCartx(n)" class="mx-2" fab outlined dark x-small
+                                                        color="primary">
+                                                        <v-icon dark> mdi-plus </v-icon>
                                                     </v-btn>
                                                 </div>
                                             </div>
