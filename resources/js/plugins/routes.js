@@ -52,5 +52,18 @@ export default new router({
                 }
             },
         },
+        {
+            path: "/carrito",
+            name: "carrito.compra",
+            component: () =>
+                import("../Views/cart/Cart.vue"),
+            async beforeRouteUpdate(to, from, next) {
+                if (to.path === from.path) {
+                    next(false);
+                } else {
+                    next();
+                }
+            },
+        },
     ],
 });

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="secondary white--text top-bar" >
+        <div class="secondary white--text top-bar">
             <v-container>
                 <div class="d-flex justify-space-between align-center">
                     <v-toolbar-title>
@@ -52,22 +52,24 @@
                 </div>
             </v-container>
         </div>
-        <v-app-bar height="92" app  class="sub-topbar"  color="white py-1">
-            <v-container :class="$vuetify.breakpoint.xs ? 'mt-10': ''">
-                <v-row > 
-                    <v-col cols="6" md="3" sm="6" xs="6" >
+        <v-app-bar height="92" app class="sub-topbar" color="white py-1">
+            <v-container :class="$vuetify.breakpoint.xs ? 'mt-10' : ''">
+                <v-row>
+                    <v-col cols="2" md="2" sm="2" xs="2" v-show="$vuetify.breakpoint.xs">
+                        <v-app-bar-nav-icon @click.stop="drawer2 = !drawer2" />
+                    </v-col>
+                    <v-col cols="4" md="3" sm="6" xs="6">
                         <v-toolbar-title class="d-flex align-center">
                             <router-link to="/">
-                                <v-img  class="me-2 logo d-md-block" width="98" 
-                                        src="../../../../images/logoTest.jpeg"
-                                        alt="" />
+                                <v-img class="me-2 logo d-md-block" width="98" src="../../../../images/logoTest.jpeg"
+                                    alt="" />
                             </router-link>
                             <div class="dropdown-ecommerce">
                                 <!-- <HeaderNavbar /> -->
                             </div>
                         </v-toolbar-title>
                     </v-col>
-                    <v-col cols="12" md="6" sm="12" xs="12" v-show="!$vuetify.breakpoint.xs" >
+                    <v-col cols="12" md="6" sm="12" xs="12" v-show="!$vuetify.breakpoint.xs">
                         <div class="search-bar d-flex p-relative ">
                             <v-text-field v-model="computed_palabra_clave_busqueda_producto"
                                 @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
@@ -155,7 +157,7 @@
                             </v-badge>
                         </div>
                     </v-col>
-                    <v-col cols="12"  v-show="$vuetify.breakpoint.xs" >
+                    <v-col cols="12" v-show="$vuetify.breakpoint.xs">
                         <div class="search-bar d-flex p-relative ">
                             <v-text-field v-model="computed_palabra_clave_busqueda_producto"
                                 @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
@@ -177,15 +179,6 @@
                         </div>
                     </v-col>
                 </v-row>
-                <!-- <div>
-                    
-                    <v-col cols="12" md="7">
-                        
-                    </v-col>
-                    <div class="">
-                       
-                    </div>
-                </div> -->
             </v-container>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" fixed temporary right width="320" class="z-999">
@@ -239,6 +232,40 @@
                             shopping</p>
                     </div>
                 </div>
+
+            </div>
+            <template v-slot:append v-if="getCartProducts.length >= 1">
+                <div class="pa-2">
+                    <v-btn to="/checkout-alternative" class="text-capitalize mb-3" block color="primary">
+                        Checkout Now (${{ cartTotal | numberFormat }})
+                    </v-btn>
+                    <v-btn to="/carrito" class="text-cappitalise" outlined block color="primary" style="margin-bottom: 60px;">
+                        View Cart
+                    </v-btn>
+                </div>
+            </template>
+        </v-navigation-drawer>
+        <v-navigation-drawer v-model="drawer2" fixed temporary left width="320" class="z-999" v-if="$vuetify.breakpoint.xs">
+            <div class="secondary-siebar-content">
+                <v-list-item>
+                    <router-link to="/">
+                        <v-img class="me-2 logo d-md-block" width="98" src="../../../../images/logoTest.jpeg" alt="" />
+                    </router-link>
+                </v-list-item>
+
+                <v-divider></v-divider>
+
+                <v-list dense nav>
+                    <v-list-item v-for="item in items" :key="item.title" link :to="{ name: item.route_name }">
+                        <v-list-item-icon>
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-icon>
+
+                        <v-list-item-content>
+                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
 
             </div>
             <template v-slot:append v-if="getCartProducts.length >= 1">
@@ -528,7 +555,13 @@ export default {
             ],
             itemTwo: ["Foo", "Bar", "Fizz", "Buzz"],
             drawer: false,
+            drawer2: false,
             group: null,
+            items: [
+                { title: 'Home', icon: 'mdi-view-dashboard', route_name: 'home' },
+                { title: 'Proveedores', icon: 'mdi-view-dashboard', route_name: 'home.proveedores' },
+                { title: 'Productos', icon: 'mdi-view-dashboard', route_name: 'home.productos' },
+            ],
         }
     },
     components: {

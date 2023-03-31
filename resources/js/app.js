@@ -32,7 +32,7 @@ for (const file of requireComponent.keys()) {
 Vue.filter('numberFormat', function (value, moneda = '') {
   if (!value) return ''
   const exp = /(\d)(?=(\d{3})+(?!\d))/g;
-  const rep = '$1,';
+  const rep = '$1.';
   return `${moneda} ${parseFloat(value).toFixed(2).toString().replace(exp,rep)}`
 })
 
