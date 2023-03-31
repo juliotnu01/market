@@ -52,24 +52,21 @@
                 </div>
             </v-container>
         </div>
-        <v-app-bar height="92" app class="sub-topbar" color="white py-1">
-            <v-container :class="$vuetify.breakpoint.xs ? 'mt-10' : ''">
+        <v-app-bar height="95" app class="sub-topbar" color="white py-1">
+            <v-container :class="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm  ? 'mt-10' : ''">
                 <v-row>
-                    <v-col cols="2" md="2" sm="2" xs="2" v-show="$vuetify.breakpoint.xs">
+                    <v-col cols="2" xs="2" sm="2" v-show="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm == true">
                         <v-app-bar-nav-icon @click.stop="drawer2 = !drawer2" />
                     </v-col>
-                    <v-col cols="4" md="3" sm="6" xs="6">
+                    <v-col cols="5" xs="5" sm="5" md="3" lg="3">
                         <v-toolbar-title class="d-flex align-center">
                             <router-link to="/">
                                 <v-img class="me-2 logo d-md-block" width="98" src="../../../../images/logoTest.jpeg"
                                     alt="" />
                             </router-link>
-                            <div class="dropdown-ecommerce">
-                                <!-- <HeaderNavbar /> -->
-                            </div>
                         </v-toolbar-title>
                     </v-col>
-                    <v-col cols="12" md="6" sm="12" xs="12" v-show="!$vuetify.breakpoint.xs">
+                    <v-col cols="12" md="6" lg="6" v-show="$vuetify.breakpoint.md == true || $vuetify.breakpoint.lg == true">
                         <div class="search-bar d-flex p-relative ">
                             <v-text-field v-model="computed_palabra_clave_busqueda_producto"
                                 @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
@@ -90,7 +87,7 @@
                             </v-menu>
                         </div>
                     </v-col>
-                    <v-col cols="6" md="3" sm="6" xs="6" align-self="end">
+                    <v-col cols="5" xs="5" sm="5" md="3" lg="3">
                         <div class="d-md-block  mr-0" style="float: right;">
                             <v-dialog v-model="dialog" width="500">
                                 <template v-slot:activator="{ on, attrs }">
@@ -157,7 +154,7 @@
                             </v-badge>
                         </div>
                     </v-col>
-                    <v-col cols="12" v-show="$vuetify.breakpoint.xs">
+                    <v-col cols="12" v-show="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm == true">
                         <div class="search-bar d-flex p-relative ">
                             <v-text-field v-model="computed_palabra_clave_busqueda_producto"
                                 @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense

@@ -124,18 +124,15 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "d-flex justify-space-between w-100 mb-3"
     }, [_c("div", [_c("div", {
-      staticClass: "d-flex"
+      staticClass: "d-flex",
+      style: _vm.$vuetify.breakpoint.xs ? "width: 300px;\n                                                        height: 100px;\n                                                        word-wrap: break-word;\n                                                        word-break: break-all;\n                                                        padding-right: 30px;" : ""
     }, [_c("h4", {
       staticClass: "font-600 text-truncate mb-4"
     }, [_vm._v(_vm._s(n.name))])]), _vm._v(" "), _c("div", [_c("p", {
       staticClass: "grey--text text--darken-1 mb-0"
     }, [_vm._v("\n                                                        $" + _vm._s(_vm._f("numberFormat")(n.amount)) + " x " + _vm._s(n.qty) + "\n                                                        "), _c("span", {
       staticClass: "primary--text ms-2 font-600"
-    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(n.amount * n.qty)))])])])]), _vm._v(" "), _c("v-btn", {
-      attrs: {
-        icon: ""
-      }
-    }, [_c("v-icon", [_vm._v("mdi-close")])], 1)], 1), _vm._v(" "), _c("div", {
+    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(n.amount * n.qty)))])])])])]), _vm._v(" "), _c("div", {
       staticClass: "d-flex justify-end flex-grow-1 align-end"
     }, [_c("div", {
       staticClass: "d-flex align-center"

@@ -13,7 +13,11 @@
                                         <div class="d-flex flex-column flex-grow-1 flex-wrap pa-4 mw-0">
                                             <div class="d-flex justify-space-between w-100 mb-3">
                                                 <div>
-                                                    <div class="d-flex">
+                                                    <div class="d-flex" :style="$vuetify.breakpoint.xs ? `width: 300px;
+                                                            height: 100px;
+                                                            word-wrap: break-word;
+                                                            word-break: break-all;
+                                                            padding-right: 30px;`: ''">
                                                         <h4 class="font-600 text-truncate mb-4">{{ n.name }}</h4>
                                                     </div>
                                                     <div>
@@ -24,9 +28,9 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <v-btn icon>
+                                                <!-- <v-btn icon>
                                                     <v-icon>mdi-close</v-icon>
-                                                </v-btn>
+                                                </v-btn> -->
                                             </div>
                                             <div class="d-flex justify-end flex-grow-1 align-end">
                                                 <div class="d-flex align-center">
@@ -50,7 +54,7 @@
                                     <div class="pa-5">
                                         <div class="d-flex justify-space-between">
                                             <p class="mb-0 grey--text text--darken-1">Total</p>
-                                            <h4 class="font-600">${{cartTotal | numberFormat}}</h4>
+                                            <h4 class="font-600">${{ cartTotal | numberFormat }}</h4>
                                         </div>
                                         <v-divider class="my-3"></v-divider>
                                         <div class="d-flex align-center mb-4">
@@ -313,7 +317,7 @@ export default {
             return total;
         }
     },
-    methods:{
+    methods: {
         ...mapActions(["addCart", "removeCart"]),
         removeCartx(item) {
             this.removeCart(item)
