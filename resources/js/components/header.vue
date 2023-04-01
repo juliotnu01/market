@@ -583,9 +583,6 @@ export default {
             return total;
         }
     },
-    mounted() {
-
-    },
     methods: {
         ...mapActions(["addCart", "removeCart"]),
         async searchProducto() {

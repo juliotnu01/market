@@ -227,12 +227,19 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['getProducts', 'getCategory', 'getRatings', 'itemsBySearch']),
+        ...mapGetters(['getProducts', 'getCategory', 'getRatings', 'itemsBySearch', 'palabra_clave_busqueda_producto' ]),
 
         numberOfPages() {
             return Math.ceil(this.itemsBySearch.length / this.itemsPerPage)
         },
-
+        computed_palabra_clave_busqueda_producto: {
+            get() {
+                return this.palabra_clave_busqueda_producto
+            },
+            set(val) {
+                this.$store.commit('setpalabra_clave_busqueda_producto', val)
+            }
+        },
         itemSearch: {
             get() {
                 return this.itemsBySearch
@@ -243,17 +250,12 @@ export default {
         }
 
     },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-
-
-    },
     destroyed() {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
         ...mapActions(["addCart", "removeCart",]),
-
+       
         relevance(amount) {
 
             if (this.select == 'Low to High') {

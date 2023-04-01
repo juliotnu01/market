@@ -39,9 +39,17 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       selected: []
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getProducts', 'getCategory', 'getRatings', 'itemsBySearch'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getProducts', 'getCategory', 'getRatings', 'itemsBySearch', 'palabra_clave_busqueda_producto'])), {}, {
     numberOfPages: function numberOfPages() {
       return Math.ceil(this.itemsBySearch.length / this.itemsPerPage);
+    },
+    computed_palabra_clave_busqueda_producto: {
+      get: function get() {
+        return this.palabra_clave_busqueda_producto;
+      },
+      set: function set(val) {
+        this.$store.commit('setpalabra_clave_busqueda_producto', val);
+      }
     },
     itemSearch: {
       get: function get() {
@@ -52,9 +60,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
     }
   }),
-  mounted: function mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
   destroyed: function destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
   },

@@ -36,7 +36,7 @@ class ProductoController extends Controller
     public function indexProductosBySearch($palabraClave)
     {
         try {
-            if($palabraClave == ''){
+            if($palabraClave == '' || $palabraClave == null ){
                 $productos = Productos::all();
             }else{
                 $productos = Productos::where('nombre',"LIKE","%$palabraClave%")->get();
