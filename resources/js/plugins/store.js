@@ -890,7 +890,31 @@ export const store = new Vuex.Store({
         itemsBySearch: [],
         overlay: false,
         singleProduct: {},
-        palabra_clave_busqueda_producto: ''
+        palabra_clave_busqueda_producto: '',
+        pago_en_lugar_efectivo: false,
+        codigo_transferencia: '',
+        factura: {
+            items: [],
+            total_factura: 0,
+            iva: '',
+            descuento: '',
+            comentario: '',
+            codigo_promocional: '',
+            direccion:{
+                pais: '',
+                estado:'',
+                zip: '',
+                direccion_1: '',
+                direccion_2: '',
+            },
+            detalle_fatura: {
+                nombre_completo: '',
+                correo: '',
+                telefono: '',
+            }
+
+        },
+
     },
     getters: {
         getProducts: (state) => state.products,
@@ -901,6 +925,7 @@ export const store = new Vuex.Store({
         overlay: (state) => state.overlay,
         singleProduct: (state) => state.singleProduct,
         palabra_clave_busqueda_producto: (state) => state.palabra_clave_busqueda_producto,
+        factura: (state) => state.factura,
     },
     actions: {
         async getsingleProduct({ commit }, id) {
@@ -946,6 +971,9 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        setFactura(state, data){
+            state.factura = data
+        },
         setpalabra_clave_busqueda_producto(state,data){
             state.palabra_clave_busqueda_producto = data
         },

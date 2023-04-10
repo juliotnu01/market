@@ -79,8 +79,8 @@
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
-                            <h5 class="primary--text mr-1">${{ item.precio }}</h5>
-                            <h5 class="grey--text text--darken-1">${{ item.descuento }}</h5>
+                            <h5 class="primary--text mr-1">${{ item.precio | numberFormat }}</h5>
+                            <h5 class="grey--text text--darken-1">${{ item.descuento | numberFormat}}</h5>
                         </div>
                     </v-col>
 
@@ -125,8 +125,8 @@
                         <v-rating :value="4.5" color="amber" dense half-increments readonly size="16"></v-rating>
                         <h5 class="mb-1">{{ item.name }}</h5>
                         <div class="d-flex align-center flex-wrap">
-                            <h5 class="primary--text mr-1">${{ item.precio }}</h5>
-                            <h5 class="grey--text text--darken-1">${{ item.descuento }}</h5>
+                            <h5 class="primary--text mr-1">${{ item.precio | numberFormat }}</h5>
+                            <h5 class="grey--text text--darken-1">${{ item.descuento | numberFormat }}</h5>
                         </div>
                     </v-col>
 
@@ -294,7 +294,7 @@
                         <v-img class="mb-4 br-8 card-overlay-item" contain :src="n.img"></v-img>
 
                         <h5 class="mb-1">{{ n.title }}</h5>
-                        <h5 class="primary--text">{{ n.price }}</h5>
+                        <h5 class="primary--text">{{ n.price | numberFormat }}</h5>
                     </v-col>
 
                     <template #prevArrow="arrowOption">

@@ -33,7 +33,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     return {
       items: ["Foo", "Bar", "Fizz", "Buzz"],
       radios: null,
-      radiosTwo: null,
+      switch1: false,
+      switch2: false,
       cart: [{
         img: __webpack_require__(/*! ../../assets/images/products/Automotive/1.Ford2019.png */ "./resources/js/assets/images/products/Automotive/1.Ford2019.png"),
         name: "Lord 2019"
@@ -46,13 +47,22 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }]
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getCartProducts', 'palabra_clave_busqueda_producto'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getCartProducts', 'palabra_clave_busqueda_producto', 'factura'])), {}, {
     cartTotal: function cartTotal() {
       var total = 0;
       this.getCartProducts.forEach(function (product) {
         total += product.amount * product.qty;
       });
+      this.computed_factura.total_factura = total;
       return total;
+    },
+    computed_factura: {
+      get: function get() {
+        return this.factura;
+      },
+      set: function set(val) {
+        this.$store.commit('setFactura', val);
+      }
     }
   })
 }, "methods", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["addCart", "removeCart"])), {}, {
@@ -98,7 +108,7 @@ var render = function render() {
     }
   }, [_c("tab-content", {
     attrs: {
-      title: "Cart",
+      title: "Carrito",
       icon: "mdi mdi-cart-outline"
     }
   }, [_c("v-row", [_c("v-col", {
@@ -125,7 +135,7 @@ var render = function render() {
       staticClass: "d-flex justify-space-between w-100 mb-3"
     }, [_c("div", [_c("div", {
       staticClass: "d-flex",
-      style: _vm.$vuetify.breakpoint.xs ? "width: 300px;\n                                                        height: 100px;\n                                                        word-wrap: break-word;\n                                                        word-break: break-all;\n                                                        padding-right: 30px;" : ""
+      style: _vm.$vuetify.breakpoint.xs ? "width: 300px;\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        height: 100px;\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        word-wrap: break-word;\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        word-break: break-all;\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-right: 30px;" : ""
     }, [_c("h4", {
       staticClass: "font-600 text-truncate mb-4"
     }, [_vm._v(_vm._s(n.name))])]), _vm._v(" "), _c("div", [_c("p", {
@@ -194,92 +204,82 @@ var render = function render() {
     staticClass: "my-3"
   }), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-center mb-4"
-  }, [_c("h6", {}, [_vm._v("Additional Comments")]), _vm._v(" "), _c("v-chip", {
-    staticClass: "ma-2",
-    attrs: {
-      label: "",
-      color: "primary lighten-5",
-      small: ""
-    }
-  }, [_c("span", {
-    staticClass: "primary--text text-sm"
-  }, [_vm._v("Note")])])], 1), _vm._v(" "), _c("v-textarea", {
+  }, [_c("h6", {}, [_vm._v("Comentario")])]), _vm._v(" "), _c("v-textarea", {
     attrs: {
       outlined: "",
       "hide-details": "",
       name: "input-7-4",
-      label: "Comments",
+      label: "Agrega un comentario",
       value: ""
+    },
+    model: {
+      value: _vm.computed_factura.comentario,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura, "comentario", $$v);
+      },
+      expression: "computed_factura.comentario"
     }
   }), _vm._v(" "), _c("v-divider", {
-    staticClass: "my-4"
-  }), _vm._v(" "), _c("v-text-field", {
-    staticClass: "mb-4",
-    attrs: {
-      label: "Voucher",
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  }), _vm._v(" "), _c("v-btn", {
-    staticClass: "text-capitalize font-600",
-    attrs: {
-      color: "primary",
-      outlined: "",
-      block: ""
-    }
-  }, [_vm._v("\n                                        Apply Voucher\n                                    ")]), _vm._v(" "), _c("v-divider", {
     staticClass: "my-3"
   }), _vm._v(" "), _c("h6", {
     staticClass: "mb-4"
-  }, [_vm._v("Shipping Estimates")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("Direccion de envio")]), _vm._v(" "), _c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Country")]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Pais")]), _vm._v(" "), _c("v-text-field", {
     staticClass: "mb-4",
     attrs: {
       dense: "",
-      items: _vm.items,
-      label: "Select Country",
       outlined: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.pais,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "pais", $$v);
+      },
+      expression: "computed_factura.direccion.pais"
     }
   }), _vm._v(" "), _c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("State")]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Estado")]), _vm._v(" "), _c("v-text-field", {
     staticClass: "mb-4",
     attrs: {
       dense: "",
-      items: _vm.items,
-      label: "Select State",
       outlined: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.estado,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "estado", $$v);
+      },
+      expression: "computed_factura.direccion.estado"
     }
   }), _vm._v(" "), _c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Zip Code")]), _vm._v(" "), _c("v-text-field", {
+  }, [_vm._v("Codigo Zip")]), _vm._v(" "), _c("v-text-field", {
     staticClass: "mb-4",
     attrs: {
-      label: "3100",
-      outlined: "",
       dense: "",
+      outlined: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.zip,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "zip", $$v);
+      },
+      expression: "computed_factura.direccion.zip"
     }
   }), _vm._v(" "), _c("v-btn", {
     staticClass: "text-capitalize font-600 mb-4",
     attrs: {
       color: "primary",
-      outlined: "",
       block: ""
     }
-  }, [_vm._v("\n                                        Calculate Shipping\n                                    ")]), _vm._v(" "), _c("v-btn", {
-    staticClass: "text-capitalize font-600 mb-4",
+  }, [_vm._v("\n                                        Pagar ahora\n                                    ")])], 1)])], 1)], 1)], 1), _vm._v(" "), _c("tab-content", {
     attrs: {
-      color: "primary",
-      block: ""
-    }
-  }, [_vm._v("\n                                        Checkout Now\n                                    ")])], 1)])], 1)], 1)], 1), _vm._v(" "), _c("tab-content", {
-    attrs: {
-      title: "Details",
+      title: "Detalle",
       icon: "mdi mdi-newspaper-variant-outline"
     }
   }, [_c("v-row", [_c("v-col", {
@@ -293,7 +293,7 @@ var render = function render() {
     staticClass: "pa-5"
   }, [_c("h6", {
     staticClass: "mb-4"
-  }, [_vm._v("Shipping Address")]), _vm._v(" "), _c("v-row", [_c("v-col", {
+  }, [_vm._v("Direccino de envio")]), _vm._v(" "), _c("v-row", [_c("v-col", {
     attrs: {
       cols: "12",
       xl: "6",
@@ -301,11 +301,18 @@ var render = function render() {
     }
   }, [_c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Full Name")]), _vm._v(" "), _c("v-text-field", {
+  }, [_vm._v("Nombre completo")]), _vm._v(" "), _c("v-text-field", {
     attrs: {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.detalle_fatura.nombre_completo,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.detalle_fatura, "nombre_completo", $$v);
+      },
+      expression: "computed_factura.detalle_fatura.nombre_completo"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
@@ -315,45 +322,45 @@ var render = function render() {
     }
   }, [_c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Email Address")]), _vm._v(" "), _c("v-text-field", {
+  }, [_vm._v("Correo Electronico")]), _vm._v(" "), _c("v-text-field", {
     attrs: {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.detalle_fatura.correo,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.detalle_fatura, "correo", $$v);
+      },
+      expression: "computed_factura.detalle_fatura.correo"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
       cols: "12",
-      xl: "6",
-      lg: "6"
+      xl: "4",
+      lg: "4"
     }
   }, [_c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Phone Number")]), _vm._v(" "), _c("v-text-field", {
+  }, [_vm._v("Teléfono")]), _vm._v(" "), _c("v-text-field", {
     attrs: {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.detalle_fatura.telefono,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.detalle_fatura, "telefono", $$v);
+      },
+      expression: "computed_factura.detalle_fatura.telefono"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
       cols: "12",
-      xl: "6",
-      lg: "6"
-    }
-  }, [_c("p", {
-    staticClass: "text-14 mb-1"
-  }, [_vm._v("Company")]), _vm._v(" "), _c("v-text-field", {
-    attrs: {
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  })], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6",
-      lg: "6"
+      xl: "4",
+      lg: "4"
     }
   }, [_c("p", {
     staticClass: "text-14 mb-1"
@@ -362,22 +369,34 @@ var render = function render() {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.zip,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "zip", $$v);
+      },
+      expression: "computed_factura.direccion.zip"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
       cols: "12",
-      xl: "6",
-      lg: "6"
+      xl: "4",
+      lg: "4"
     }
   }, [_c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Country")]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Pais")]), _vm._v(" "), _c("v-text-field", {
     attrs: {
-      dense: "",
-      items: _vm.items,
-      label: "Select...",
       outlined: "",
+      dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.pais,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "pais", $$v);
+      },
+      expression: "computed_factura.direccion.pais"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
@@ -392,6 +411,13 @@ var render = function render() {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.direccion_1,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "direccion_1", $$v);
+      },
+      expression: "computed_factura.direccion.direccion_1"
     }
   })], 1), _vm._v(" "), _c("v-col", {
     attrs: {
@@ -406,6 +432,13 @@ var render = function render() {
       outlined: "",
       dense: "",
       "hide-details": ""
+    },
+    model: {
+      value: _vm.computed_factura.direccion.direccion_2,
+      callback: function callback($$v) {
+        _vm.$set(_vm.computed_factura.direccion, "direccion_2", $$v);
+      },
+      expression: "computed_factura.direccion.direccion_2"
     }
   })], 1)], 1)], 1)])], 1), _vm._v(" "), _c("v-col", {
     attrs: {
@@ -422,23 +455,29 @@ var render = function render() {
     staticClass: "mb-0 grey--text text--darken-1"
   }, [_vm._v("Subtotal:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600 mb-0"
-  }, [_vm._v("$2610.00")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(_vm.computed_factura.total_factura)) + "\n                                        ")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Shipping:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("Envio:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
   }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Tax:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("I.V.A.:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
-  }, [_vm._v("$40.00")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Discount:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("Descuento:")]), _vm._v(" "), _c("h4", {
+    staticClass: "font-600"
+  }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-space-between mb-2"
+  }, [_c("p", {
+    staticClass: "mb-0 grey--text text--darken-1"
+  }, [_vm._v("Descuento cupon:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
   }, [_vm._v("-")])]), _vm._v(" "), _c("v-divider", {
     staticClass: "my-3"
@@ -446,10 +485,10 @@ var render = function render() {
     staticClass: "d-flex justify-end"
   }, [_c("h2", {
     staticClass: "mb-3"
-  }, [_vm._v("$2610.00")])]), _vm._v(" "), _c("v-text-field", {
+  }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(_vm.computed_factura.total_factura)))])]), _vm._v(" "), _c("v-text-field", {
     staticClass: "mb-4",
     attrs: {
-      label: "Voucher",
+      label: "codigo de cupon",
       outlined: "",
       dense: "",
       "hide-details": ""
@@ -461,9 +500,9 @@ var render = function render() {
       outlined: "",
       block: ""
     }
-  }, [_vm._v("\n                                        Apply Voucher\n                                    ")])], 1)])], 1)], 1)], 1), _vm._v(" "), _c("tab-content", {
+  }, [_vm._v("\n                                        Aplicar cupon de descuento\n                                    ")])], 1)])], 1)], 1)], 1), _vm._v(" "), _c("tab-content", {
     attrs: {
-      title: "Payment",
+      title: "Forma de pago",
       icon: "mdi mdi-briefcase-variant-outline"
     }
   }, [_c("v-row", [_c("v-col", {
@@ -473,134 +512,39 @@ var render = function render() {
       lg: "8",
       md: "6"
     }
-  }, [_c("base-card", [_c("div", {
+  }, [_c("base-card", [_c("v-divider"), _vm._v(" "), _c("div", {
     staticClass: "pa-5"
-  }, [_c("v-radio-group", {
-    staticClass: "mt-0 pt-0",
+  }, [_c("h6", {
+    staticClass: "black--text font-600"
+  }, [_vm._v("Pago Tranferencia")]), _vm._v(" "), _c("v-switch", {
     attrs: {
-      "hide-details": ""
+      label: "".concat(_vm.switch2.toString() == "true" ? "Pagar con transferencia" : "")
     },
     model: {
-      value: _vm.radios,
+      value: _vm.switch2,
       callback: function callback($$v) {
-        _vm.radios = $$v;
+        _vm.switch2 = $$v;
       },
-      expression: "radios"
+      expression: "switch2"
     }
-  }, [_c("v-radio", {
-    attrs: {
-      color: "secondary"
-    },
-    scopedSlots: _vm._u([{
-      key: "label",
-      fn: function fn() {
-        return [_c("h6", {
-          staticClass: "black--text font-600"
-        }, [_vm._v("Pay With Credit Card")])];
-      },
-      proxy: true
-    }])
-  })], 1)], 1), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("v-row", {
-    staticClass: "pa-5"
-  }, [_c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6",
-      lg: "6"
-    }
-  }, [_c("p", {
-    staticClass: "text-14 mb-1"
-  }, [_vm._v("Card Number")]), _vm._v(" "), _c("v-text-field", {
-    attrs: {
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  })], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6",
-      lg: "6"
-    }
-  }, [_c("p", {
-    staticClass: "text-14 mb-1"
-  }, [_vm._v("Exp Date")]), _vm._v(" "), _c("v-text-field", {
-    attrs: {
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  })], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6",
-      lg: "6"
-    }
-  }, [_c("p", {
-    staticClass: "text-14 mb-1"
-  }, [_vm._v("Name on Card")]), _vm._v(" "), _c("v-text-field", {
-    attrs: {
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  })], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6",
-      lg: "6"
-    }
-  }, [_c("p", {
-    staticClass: "text-14 mb-1"
-  }, [_vm._v("Name on Card")]), _vm._v(" "), _c("v-text-field", {
-    attrs: {
-      outlined: "",
-      dense: "",
-      "hide-details": ""
-    }
-  })], 1), _vm._v(" "), _c("v-col", {
-    attrs: {
-      cols: "12",
-      xl: "6"
-    }
-  }, [_c("v-btn", {
-    staticClass: "text-capitalize font-600",
-    attrs: {
-      outlined: "",
-      color: "primary"
-    }
-  }, [_vm._v("\n                                            Submit\n                                        ")])], 1)], 1), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("div", {
-    staticClass: "pa-5"
-  }, [_c("v-radio-group", {
-    staticClass: "mt-0 pt-0",
-    attrs: {
-      "hide-details": ""
-    },
-    model: {
-      value: _vm.radiosTwo,
-      callback: function callback($$v) {
-        _vm.radiosTwo = $$v;
-      },
-      expression: "radiosTwo"
-    }
-  }, [_c("v-radio", {
-    attrs: {
-      color: "secondary"
-    },
-    scopedSlots: _vm._u([{
-      key: "label",
-      fn: function fn() {
-        return [_c("h6", {
-          staticClass: "black--text font-600"
-        }, [_vm._v("Pay with Paypal")])];
-      },
-      proxy: true
-    }])
-  })], 1)], 1), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("div", {
+  })], 1), _vm._v(" "), _c("v-divider", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.switch2,
+      expression: "switch2"
+    }]
+  }), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.switch2,
+      expression: "switch2"
+    }],
     staticClass: "pa-5"
   }, [_c("p", {
     staticClass: "text-14 mb-1"
-  }, [_vm._v("Name on Card")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Codigo de tranferencia")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex"
   }, [_c("v-text-field", {
     staticClass: "mr-4",
@@ -614,34 +558,22 @@ var render = function render() {
       color: "primary",
       outlined: ""
     }
-  }, [_vm._v(" Submit ")])], 1)]), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("div", {
+  }, [_vm._v(" Cargar codigo ")])], 1)]), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("div", {
     staticClass: "pa-5"
-  }, [_c("v-radio-group", {
-    staticClass: "mt-0 pt-0",
+  }, [_c("h6", {
+    staticClass: "black--text font-600"
+  }, [_vm._v("Pagar en desino")]), _vm._v(" "), _c("v-switch", {
     attrs: {
-      "hide-details": ""
+      label: "".concat(_vm.switch1.toString() == "true" ? "Pagar en destino" : "")
     },
     model: {
-      value: _vm.radiosTwo,
+      value: _vm.switch1,
       callback: function callback($$v) {
-        _vm.radiosTwo = $$v;
+        _vm.switch1 = $$v;
       },
-      expression: "radiosTwo"
+      expression: "switch1"
     }
-  }, [_c("v-radio", {
-    attrs: {
-      color: "secondary"
-    },
-    scopedSlots: _vm._u([{
-      key: "label",
-      fn: function fn() {
-        return [_c("h6", {
-          staticClass: "black--text font-600"
-        }, [_vm._v("Cash On Delivery")])];
-      },
-      proxy: true
-    }])
-  })], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-col", {
+  })], 1)], 1)], 1), _vm._v(" "), _c("v-col", {
     attrs: {
       cols: "12",
       xl: "3",
@@ -656,23 +588,29 @@ var render = function render() {
     staticClass: "mb-0 grey--text text--darken-1"
   }, [_vm._v("Subtotal:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600 mb-0"
-  }, [_vm._v("$2610.00")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(_vm.computed_factura.total_factura)) + "\n                                        ")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Shipping:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("Envio:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
   }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Tax:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("I.V.A.:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
-  }, [_vm._v("$40.00")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-space-between mb-2"
   }, [_c("p", {
     staticClass: "mb-0 grey--text text--darken-1"
-  }, [_vm._v("Discount:")]), _vm._v(" "), _c("h4", {
+  }, [_vm._v("Descuento:")]), _vm._v(" "), _c("h4", {
+    staticClass: "font-600"
+  }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-space-between mb-2"
+  }, [_c("p", {
+    staticClass: "mb-0 grey--text text--darken-1"
+  }, [_vm._v("Descuento cupon:")]), _vm._v(" "), _c("h4", {
     staticClass: "font-600"
   }, [_vm._v("-")])]), _vm._v(" "), _c("v-divider", {
     staticClass: "my-3"
@@ -680,7 +618,22 @@ var render = function render() {
     staticClass: "d-flex justify-end"
   }, [_c("h2", {
     staticClass: "mb-3"
-  }, [_vm._v("$2610.00")])])], 1)])], 1)], 1)], 1)], 1)], 1)], 1)], 1);
+  }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(_vm.computed_factura.total_factura)))])]), _vm._v(" "), _c("v-text-field", {
+    staticClass: "mb-4",
+    attrs: {
+      label: "codigo de cupon",
+      outlined: "",
+      dense: "",
+      "hide-details": ""
+    }
+  }), _vm._v(" "), _c("v-btn", {
+    staticClass: "text-capitalize font-600",
+    attrs: {
+      color: "primary",
+      outlined: "",
+      block: ""
+    }
+  }, [_vm._v("\n                                        Aplicar cupon de descuento\n                                    ")])], 1)])], 1)], 1)], 1)], 1)], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

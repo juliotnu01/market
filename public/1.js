@@ -838,9 +838,9 @@ var render = function render() {
       staticClass: "d-flex align-center flex-wrap"
     }, [_c("h5", {
       staticClass: "primary--text mr-1"
-    }, [_vm._v("$" + _vm._s(item.precio))]), _vm._v(" "), _c("h5", {
+    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(item.precio)))]), _vm._v(" "), _c("h5", {
       staticClass: "grey--text text--darken-1"
-    }, [_vm._v("$" + _vm._s(item.descuento))])])], 1);
+    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(item.descuento)))])])], 1);
   }), 1) : _vm._e(), _vm._v(" "), _c("base-card", {
     staticClass: "mb-6",
     attrs: {
@@ -941,9 +941,9 @@ var render = function render() {
       staticClass: "d-flex align-center flex-wrap"
     }, [_c("h5", {
       staticClass: "primary--text mr-1"
-    }, [_vm._v("$" + _vm._s(item.precio))]), _vm._v(" "), _c("h5", {
+    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(item.precio)))]), _vm._v(" "), _c("h5", {
       staticClass: "grey--text text--darken-1"
-    }, [_vm._v("$" + _vm._s(item.descuento))])])], 1);
+    }, [_vm._v("$" + _vm._s(_vm._f("numberFormat")(item.descuento)))])])], 1);
   }), 1) : _vm._e()], 1)], 1), _vm._v(" "), _c("v-row", [_c("v-col", {
     staticClass: "pb-0",
     attrs: {
@@ -1321,7 +1321,7 @@ var render = function render() {
       staticClass: "mb-1"
     }, [_vm._v(_vm._s(n.title))]), _vm._v(" "), _c("h5", {
       staticClass: "primary--text"
-    }, [_vm._v(_vm._s(n.price))])], 1);
+    }, [_vm._v(_vm._s(_vm._f("numberFormat")(n.price)))])], 1);
   }), 1) : _vm._e()], 1)], 1)], 1);
 };
 var staticRenderFns = [];
