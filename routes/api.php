@@ -14,8 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('auth:sanctum')->prefix('/roles')->group(function () {
+    Route::get('/get', 'RolesController@index')
+        ->name('get.roles');
+
+    Route::get('/rol/{id}', 'RolesController@getRolId')
+        ->name('get.rol.id');
+
+    Route::post('/store', 'RolesController@store')
+        ->name('store.roles');
+
+    Route::put('/udpate/rol/{id}', 'RolesController@updateRol')
+        ->name('udpate.role');
+
+    Route::post('/delete/habilidad', 'RolesController@deleteHabilidad')
+        ->name('delte.habilidad');
+        
+    Route::post('/get-permisos-roles', 'RolesController@getPermisosRol')
+        ->name('get.permiso.rol');
+});
+
+// users
+Route::middleware('auth:sanctum')->prefix('/users')->group(function () {
+    Route::get('/get',  'UserController@index')
+        ->name('get.users');
 });
 
 // proveedores
@@ -33,3 +56,7 @@ Route::post('/add-producto-masivamente', 'ProductoController@storeMasivo')->name
 Route::post('/add-producto', 'ProductoController@store')->name('add.producto');
 Route::put('/update-producto/{id}', 'ProductoController@update')->name('update.producto');
 Route::delete('/delete-producto/{id}', 'ProductoController@destroy')->name('delete.producto');
+
+//pedidos
+Route::get('/get-solicitud-pedidos', 'SolicitudDePedidoController@index')->name('get.solicited.pedidos');
+Route::post('/ordenar-pedido', 'SolicitudDePedidoController@store')->name('ordernar.pedidos');

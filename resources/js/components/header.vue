@@ -4,47 +4,93 @@
             <v-container>
                 <div class="d-flex justify-space-between align-center">
                     <v-toolbar-title>
-                        <v-img class="me-2 logo d-md-none d-block" width="98" src="../assets/images/logo.svg" />
+                        <v-img
+                            class="me-2 logo d-md-none d-block"
+                            width="98"
+                            src="../assets/images/logo.svg"
+                        />
                         <div class="mr-2 d-md-block d-none">
-                            <v-icon class="mr-2 white--text" small>mdi-phone-outline</v-icon>
+                            <v-icon class="mr-2 white--text" small
+                                >mdi-phone-outline</v-icon
+                            >
                             <span class="text-sm mr-5">+9012 3456 789</span>
-                            <v-icon class="mr-2 white--text" small>mdi-phone-outline</v-icon>
+                            <v-icon class="mr-2 white--text" small
+                                >mdi-phone-outline</v-icon
+                            >
                             <span class="text-sm">+9012 3456 7</span>
                         </div>
                     </v-toolbar-title>
                     <v-toolbar-title>
-                        <span class="white--text text-sm mr-5 d-md-inline-block d-none">Theme FAQ's</span>
-                        <span class="white--text text-sm mr-5 d-md-inline-block d-none">Need Help ?</span>
+                        <span
+                            class="white--text text-sm mr-5 d-md-inline-block d-none"
+                            >Theme FAQ's</span
+                        >
+                        <span
+                            class="white--text text-sm mr-5 d-md-inline-block d-none"
+                            >Need Help ?</span
+                        >
 
                         <v-menu offset-y>
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="transparent" dark v-bind="attrs" v-on="on" small>
+                                <v-btn
+                                    color="transparent"
+                                    dark
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    small
+                                >
                                     <v-avatar tile size="14" class="mr-2">
-                                        <img src="../assets/images/flags/usa.png" alt="" />
+                                        <img
+                                            src="../assets/images/flags/usa.png"
+                                            alt=""
+                                        />
                                     </v-avatar>
                                     <span>EN</span>
-                                    <v-icon right small>mdi-chevron-down</v-icon>
+                                    <v-icon right small
+                                        >mdi-chevron-down</v-icon
+                                    >
                                 </v-btn>
                             </template>
                             <v-list>
-                                <v-list-item v-for="(item, index) in items" :key="index">
-                                    <v-list-item-title class="pa-0 ma-0">{{ item.title }}</v-list-item-title>
+                                <v-list-item
+                                    v-for="(item, index) in items"
+                                    :key="index"
+                                >
+                                    <v-list-item-title class="pa-0 ma-0">{{
+                                        item.title
+                                    }}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
                         </v-menu>
                         <v-menu offset-y>
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="transparent" dark v-bind="attrs" v-on="on" small>
+                                <v-btn
+                                    color="transparent"
+                                    dark
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    small
+                                >
                                     <v-avatar tile size="14" class="mr-2">
-                                        <img src="../assets/images/flags/usa.png" alt="" />
+                                        <img
+                                            src="../assets/images/flags/usa.png"
+                                            alt=""
+                                        />
                                     </v-avatar>
                                     <span>USD</span>
-                                    <v-icon right small>mdi-chevron-down</v-icon>
+                                    <v-icon right small
+                                        >mdi-chevron-down</v-icon
+                                    >
                                 </v-btn>
                             </template>
                             <v-list>
-                                <v-list-item v-for="(item, index) in items" :key="index">
-                                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                <v-list-item
+                                    v-for="(item, index) in items"
+                                    :key="index"
+                                >
+                                    <v-list-item-title>{{
+                                        item.title
+                                    }}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
                         </v-menu>
@@ -53,123 +99,299 @@
             </v-container>
         </div>
         <v-app-bar height="95" app class="sub-topbar" color="white py-1">
-            <v-container :class="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm  ? 'mt-10' : ''">
+            <v-container
+                :class="
+                    $vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm
+                        ? 'mt-10'
+                        : ''
+                "
+            >
                 <v-row>
-                    <v-col cols="2" xs="2" sm="2" v-show="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm == true">
+                    <v-col
+                        cols="2"
+                        xs="2"
+                        sm="2"
+                        v-show="
+                            $vuetify.breakpoint.xs == true ||
+                            $vuetify.breakpoint.sm == true
+                        "
+                    >
                         <v-app-bar-nav-icon @click.stop="drawer2 = !drawer2" />
                     </v-col>
                     <v-col cols="5" xs="5" sm="5" md="3" lg="3">
                         <v-toolbar-title class="d-flex align-center">
                             <router-link to="/">
-                                <v-img class="me-2 logo d-md-block" width="98" src="../../../../images/logoTest.jpeg"
-                                    alt="" />
+                                <v-img
+                                    class="me-2 logo d-md-block"
+                                    width="98"
+                                    src="../../../../images/logoTest.jpeg"
+                                    alt=""
+                                />
                             </router-link>
                         </v-toolbar-title>
                     </v-col>
-                    <v-col cols="12" md="6" lg="6" v-show="$vuetify.breakpoint.md == true || $vuetify.breakpoint.lg == true">
-                        <div class="search-bar d-flex p-relative ">
-                            <v-text-field v-model="computed_palabra_clave_busqueda_producto"
-                                @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
-                                prepend-inner-icon="mdi-magnify"></v-text-field>
+                    <v-col
+                        cols="12"
+                        md="6"
+                        lg="6"
+                        v-show="
+                            $vuetify.breakpoint.md == true ||
+                            $vuetify.breakpoint.lg == true
+                        "
+                    >
+                        <div class="search-bar d-flex p-relative">
+                            <v-text-field
+                                v-model="
+                                    computed_palabra_clave_busqueda_producto
+                                "
+                                @keypress.enter="searchProducto"
+                                placeholder="Buscar Producto"
+                                filled
+                                rounded
+                                dense
+                                prepend-inner-icon="mdi-magnify"
+                            ></v-text-field>
                             <v-menu offset-y>
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn color="white" class="text-capitalize search-bar-dropdown" v-bind="attrs"
-                                        v-on="on">
+                                    <v-btn
+                                        color="white"
+                                        class="text-capitalize search-bar-dropdown"
+                                        v-bind="attrs"
+                                        v-on="on"
+                                    >
                                         All Categories
                                         <v-icon>mdi-chevron-down</v-icon>
                                     </v-btn>
                                 </template>
                                 <v-list>
-                                    <v-list-item v-for="(item, index) in items" :key="index">
-                                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                    <v-list-item
+                                        v-for="(item, index) in items"
+                                        :key="index"
+                                    >
+                                        <v-list-item-title>{{
+                                            item.title
+                                        }}</v-list-item-title>
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
                         </div>
                     </v-col>
                     <v-col cols="5" xs="5" sm="5" md="3" lg="3">
-                        <div class="d-md-block  mr-0" style="float: right;">
+                        <div class="d-md-block mr-0" style="float: right">
                             <v-dialog v-model="dialog" width="500">
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn elevation="0" fab small class="mr-3" color="grey lighten-2" v-bind="attrs"
-                                        v-on="on">
+                                    <v-btn
+                                        elevation="0"
+                                        fab
+                                        small
+                                        class="mr-3"
+                                        color="grey lighten-2"
+                                        v-bind="attrs"
+                                        v-on="on"
+                                        v-show="
+                                            Object.entries(user).length == 0
+                                        "
+                                    >
                                         <v-icon>mdi-account</v-icon>
                                     </v-btn>
                                 </template>
-
-
-
                                 <base-card>
-                                    <div class="px-3 px-md-10 py-8 ">
-                                        <h3 class="mb-2 text-center">Welcome To Ecommerce</h3>
-                                        <h5 class="font-600 grey--text text--darken-3 text-sm mb-9 text-center">Log in with
-                                            email & password
+                                    <div class="px-3 px-md-10 py-8">
+                                        <h3 class="mb-2 text-center">
+                                            Welcome To Ecommerce
+                                        </h3>
+                                        <h5
+                                            class="font-600 grey--text text--darken-3 text-sm mb-9 text-center"
+                                        >
+                                            Log in with email & password
                                         </h5>
-                                        <p class="text-14 mb-1">Email or Phone Number</p>
-                                        <v-text-field outlined dense hide-details placeholder="example@mail"
-                                            class="mb-4"></v-text-field>
-                                        <p class="text-14 mb-1">Password</p>
-                                        <v-text-field outlined dense type="password" hide-details placeholder="example@mail"
-                                            class="mb-4"></v-text-field>
-                                        <v-btn block color="primary" class="text-capitalize font-600">Login</v-btn>
+                                        <p class="text-14 mb-1">
+                                            Correo Electronico
+                                        </p>
+                                        <v-text-field
+                                            v-model="login.correo"
+                                            outlined
+                                            dense
+                                            hide-details
+                                            placeholder="example@mail"
+                                            class="mb-4"
+                                        />
+                                        <p class="text-14 mb-1">Contraseña</p>
+                                        <v-text-field
+                                            v-model="login.pass"
+                                            outlined
+                                            dense
+                                            type="password"
+                                            hide-details
+                                            placeholder="example@mail"
+                                            class="mb-4"
+                                        />
+                                        <v-btn
+                                            block
+                                            @click.prevent="loginModal"
+                                            color="primary"
+                                            class="text-capitalize font-600"
+                                            >Login</v-btn
+                                        >
                                         <v-col cols="10" lg="8" class="mx-auto">
-                                            <div class="d-flex align-center my-1">
+                                            <div
+                                                class="d-flex align-center my-1"
+                                            >
                                                 <v-divider></v-divider>
                                                 <span class="mx-4">on</span>
                                                 <v-divider></v-divider>
                                             </div>
                                         </v-col>
-                                        <v-btn block dark color="indigo" class="text-capitalize font-600 mb-4">
-
-                                            <v-icon left class="me-3">mdi-facebook</v-icon>
+                                        <!-- <v-btn
+                                            block
+                                            dark
+                                            color="indigo"
+                                            class="text-capitalize font-600 mb-4"
+                                        >
+                                            <v-icon left class="me-3"
+                                                >mdi-facebook</v-icon
+                                            >
                                             Continue with facebook
-
                                         </v-btn>
-                                        <v-btn block dark color="blue darken-2" class="text-capitalize font-600 mb-4">
-
-                                            <v-icon left class="me-3">mdi-google</v-icon>
+                                        <v-btn
+                                            block
+                                            dark
+                                            color="blue darken-2"
+                                            class="text-capitalize font-600 mb-4"
+                                        >
+                                            <v-icon left class="me-3"
+                                                >mdi-google</v-icon
+                                            >
                                             Continue with Google
-
-                                        </v-btn>
-                                        <div class="text-14 text-center my-3">Don't have account? <router-link to="/sign-up"
-                                                class=" grey--text text--darken-4 font-600">Sign Up</router-link></div>
+                                        </v-btn> -->
+                                        <div class="text-14 text-center my-3">
+                                            Don't have account?
+                                            <router-link
+                                                to="/sign-up"
+                                                class="grey--text text--darken-4 font-600"
+                                                >Sign Up</router-link
+                                            >
+                                        </div>
                                     </div>
                                     <div class="py-4 grey lighten-2">
                                         <div class="text-center">
-                                            <span class="grey--text text--darken-1">Forgot Your Password <router-link to="/"
-                                                    class="ms-2 grey--text text--darken-4 font-600">Reset It</router-link>
+                                            <span
+                                                class="grey--text text--darken-1"
+                                                >Forgot Your Password
+                                                <router-link
+                                                    to="/"
+                                                    class="ms-2 grey--text text--darken-4 font-600"
+                                                    >Reset It</router-link
+                                                >
                                             </span>
                                         </div>
                                     </div>
                                 </base-card>
                             </v-dialog>
+                            <v-menu
+                                bottom
+                                min-width="200px"
+                                rounded
+                                offset-y
+                                v-show="Object.entries(user).length > 0"
+                            >
+                                <template v-slot:activator="{ on }">
+                                    <v-btn
+                                        class="ma-2"
+                                        color="grey lighten-2"
+                                        v-on="on"
+                                        v-show="Object.entries(user).length > 0"
+                                    >
+                                        {{ user.name }}
+                                        <v-icon right dark>
+                                            mdi-account
+                                        </v-icon>
+                                    </v-btn>
+                                </template>
+                                <v-card>
+                                    <v-list-item-content class="justify-center">
+                                        <div class="mx-auto text-center">
+                                            <v-avatar color="brown">
+                                                <v-icon>mdi-account</v-icon>
+                                            </v-avatar>
+                                            <h3>{{ user.name }}</h3>
+                                            <p class="text-caption mt-1">
+                                                {{ user.email }}
+                                            </p>
+                                            <v-divider class="my-3"></v-divider>
+                                            <v-btn depressed rounded text>
+                                                Edit Account
+                                            </v-btn>
+                                            <v-divider class="my-3"></v-divider>
+                                            <v-btn depressed rounded text>
+                                                Disconnect
+                                            </v-btn>
+                                        </div>
+                                    </v-list-item-content>
+                                </v-card>
+                            </v-menu>
                             <!-- cartCount  -->
-                            <v-badge bordered color="error"
-                                :content="getCartProducts.length == 0 ? '0' : getCartProducts.length" overlap>
-
-                                <v-btn @click="drawer = true" elevation="0" fab color="grey lighten-2" small>
-
+                            <v-badge
+                                bordered
+                                color="error"
+                                :content="
+                                    getCartProducts.length == 0
+                                        ? '0'
+                                        : getCartProducts.length
+                                "
+                                overlap
+                            >
+                                <v-btn
+                                    @click="drawer = true"
+                                    elevation="0"
+                                    fab
+                                    color="grey lighten-2"
+                                    small
+                                >
                                     <v-icon color="">mdi-cart</v-icon>
                                 </v-btn>
                             </v-badge>
                         </div>
                     </v-col>
-                    <v-col cols="12" v-show="$vuetify.breakpoint.xs == true || $vuetify.breakpoint.sm == true">
-                        <div class="search-bar d-flex p-relative ">
-                            <v-text-field v-model="computed_palabra_clave_busqueda_producto"
-                                @keypress.enter="searchProducto" placeholder="Buscar Producto" filled rounded dense
-                                prepend-inner-icon="mdi-magnify"></v-text-field>
+                    <v-col
+                        cols="12"
+                        v-show="
+                            $vuetify.breakpoint.xs == true ||
+                            $vuetify.breakpoint.sm == true
+                        "
+                    >
+                        <div class="search-bar d-flex p-relative">
+                            <v-text-field
+                                v-model="
+                                    computed_palabra_clave_busqueda_producto
+                                "
+                                @keypress.enter="searchProducto"
+                                placeholder="Buscar Producto"
+                                filled
+                                rounded
+                                dense
+                                prepend-inner-icon="mdi-magnify"
+                            ></v-text-field>
                             <v-menu offset-y>
                                 <template v-slot:activator="{ on, attrs }">
-                                    <v-btn color="white" class="text-capitalize search-bar-dropdown" v-bind="attrs"
-                                        v-on="on">
+                                    <v-btn
+                                        color="white"
+                                        class="text-capitalize search-bar-dropdown"
+                                        v-bind="attrs"
+                                        v-on="on"
+                                    >
                                         All Categories
                                         <v-icon>mdi-chevron-down</v-icon>
                                     </v-btn>
                                 </template>
                                 <v-list>
-                                    <v-list-item v-for="(item, index) in items" :key="index">
-                                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                    <v-list-item
+                                        v-for="(item, index) in items"
+                                        :key="index"
+                                    >
+                                        <v-list-item-title>{{
+                                            item.title
+                                        }}</v-list-item-title>
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
@@ -178,7 +400,14 @@
                 </v-row>
             </v-container>
         </v-app-bar>
-        <v-navigation-drawer v-model="drawer" fixed temporary right width="320" class="z-999">
+        <v-navigation-drawer
+            v-model="drawer"
+            fixed
+            temporary
+            right
+            width="320"
+            class="z-999"
+        >
             <div class="secondary-siebar-content">
                 <v-list-item>
                     <v-list-item-avatar class="mr-0">
@@ -186,7 +415,12 @@
                     </v-list-item-avatar>
 
                     <v-list-item-content>
-                        <v-list-item-title class="">{{ getCartProducts.length }} Items</v-list-item-title>
+                        <v-list-item-title class=""
+                            >{{
+                                getCartProducts.length
+                            }}
+                            Items</v-list-item-title
+                        >
                     </v-list-item-content>
                     <v-list-item-action>
                         <v-btn icon color="" @click="drawer = false">
@@ -197,13 +431,31 @@
                 <v-divider></v-divider>
                 <div v-if="getCartProducts.length >= 1">
                     <div v-for="(n, index) in getCartProducts" :key="index">
-                        <div class="cart-item d-flex justify-space-between align-center px-2 py-3">
+                        <div
+                            class="cart-item d-flex justify-space-between align-center px-2 py-3"
+                        >
                             <div class="d-flex flex-column align-center">
-                                <v-btn @click="addCartx(n)" class="mx-2" fab outlined dark x-small color="primary">
+                                <v-btn
+                                    @click="addCartx(n)"
+                                    class="mx-2"
+                                    fab
+                                    outlined
+                                    dark
+                                    x-small
+                                    color="primary"
+                                >
                                     <v-icon dark> mdi-plus </v-icon>
                                 </v-btn>
                                 <span>{{ n.qty }}</span>
-                                <v-btn @click="removeCartx(n)" class="mx-2" fab outlined dark x-small color="primary">
+                                <v-btn
+                                    @click="removeCartx(n)"
+                                    class="mx-2"
+                                    fab
+                                    outlined
+                                    dark
+                                    x-small
+                                    color="primary"
+                                >
                                     <v-icon dark> mdi-minus </v-icon>
                                 </v-btn>
                             </div>
@@ -212,318 +464,187 @@
                             </v-avatar>
                             <div class="col-5">
                                 <h5 class="text-truncate">{{ n.title }}</h5>
-                                <p class="text-tiny">${{ n.amount }} x {{ n.qty }}</p>
-                                <h5 class="primary--text">{{ n.amount * n.qty }}</h5>
+                                <p class="text-tiny">
+                                    ${{ n.amount | numberFormat }} x {{ n.qty }}
+                                </p>
+                                <h5 class="primary--text">
+                                    {{ (n.amount * n.qty) | numberFormat }}
+                                </h5>
                             </div>
-
                         </div>
                         <v-divider></v-divider>
                     </div>
                 </div>
                 <div v-else>
-                    <div class="empty-cart-sidebar d-flex flex-column justify-center align-center mt-10">
+                    <div
+                        class="empty-cart-sidebar d-flex flex-column justify-center align-center mt-10"
+                    >
                         <v-avatar size="90" tile class="mb-8">
-                            <img src="../assets/images/empty-cart.png" alt="">
+                            <img src="../assets/images/empty-cart.png" alt="" />
                         </v-avatar>
-                        <p class="grey--text text--darken-2 px-5 mx-10 text-center ">Your shopping bag is empty. Start
-                            shopping</p>
+                        <p
+                            class="grey--text text--darken-2 px-5 mx-10 text-center"
+                        >
+                            Your shopping bag is empty. Start shopping
+                        </p>
                     </div>
                 </div>
-
             </div>
             <template v-slot:append v-if="getCartProducts.length >= 1">
                 <div class="pa-2">
-                    <v-btn to="/checkout-alternative" class="text-capitalize mb-3" block color="primary">
-                        Checkout Now (${{ cartTotal | numberFormat }})
-                    </v-btn>
-                    <v-btn to="/carrito" class="text-cappitalise" outlined block color="primary" style="margin-bottom: 60px;">
-                        View Cart
+                    <!-- <v-btn to="/checkout-alternative" class="text-capitalize mb-3" block color="primary">
+                        Checkout Now 
+                    </v-btn> -->
+                    <v-btn
+                        to="/carrito"
+                        class="text-cappitalise"
+                        outlined
+                        block
+                        color="primary"
+                        style="margin-bottom: 60px"
+                    >
+                        View Cart (${{ cartTotal | numberFormat }})
                     </v-btn>
                 </div>
             </template>
         </v-navigation-drawer>
-        <v-navigation-drawer v-model="drawer2" fixed temporary left width="320" class="z-999" v-if="$vuetify.breakpoint.xs">
+        <v-navigation-drawer
+            v-model="drawer2"
+            fixed
+            temporary
+            left
+            width="320"
+            class="z-999"
+            v-if="$vuetify.breakpoint.xs"
+        >
             <div class="secondary-siebar-content">
                 <v-list-item>
                     <router-link to="/">
-                        <v-img class="me-2 logo d-md-block" width="98" src="../../../../images/logoTest.jpeg" alt="" />
+                        <v-img
+                            class="me-2 logo d-md-block"
+                            width="98"
+                            src="../../../../images/logoTest.jpeg"
+                            alt=""
+                        />
                     </router-link>
                 </v-list-item>
 
                 <v-divider></v-divider>
 
                 <v-list dense nav>
-                    <v-list-item v-for="item in items" :key="item.title" link :to="{ name: item.route_name }">
+                    <v-list-item
+                        v-for="item in items"
+                        :key="item.title"
+                        link
+                        :to="{ name: item.route_name }"
+                    >
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-icon>
 
                         <v-list-item-content>
-                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                            <v-list-item-title>{{
+                                item.title
+                            }}</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
-
             </div>
             <template v-slot:append v-if="getCartProducts.length >= 1">
                 <div class="pa-2">
-                    <v-btn to="/checkout-alternative" class="text-capitalize mb-3" block color="primary">
+                    <v-btn
+                        to="/checkout-alternative"
+                        class="text-capitalize mb-3"
+                        block
+                        color="primary"
+                    >
                         Checkout Now (${{ cartTotal }})
                     </v-btn>
-                    <v-btn to="/cart" class="text-cappitalise" outlined block color="primary">
+                    <v-btn
+                        to="/cart"
+                        class="text-cappitalise"
+                        outlined
+                        block
+                        color="primary"
+                    >
                         View Cart
                     </v-btn>
                 </div>
             </template>
         </v-navigation-drawer>
-        <v-app-bar class="navbar white" :class="{ 'd-none': $route.path == '/sale-page-two' }">
+        <v-app-bar
+            class="navbar white"
+            :class="{ 'd-none': $route.path == '/sale-page-two' }"
+        >
             <div class="container">
                 <div class="d-flex justify-space-between align-center">
-                    <v-btn elevation="" color="grey lighten-2" class="text-capitalize" @click="toggleNavbar">
+                    <v-btn
+                        elevation=""
+                        color="grey lighten-2"
+                        class="text-capitalize"
+                        @click="toggleNavbar"
+                    >
                         <v-icon left> mdi-view-dashboard </v-icon>
                         Categories
                         <v-icon right> mdi-chevron-down </v-icon>
                     </v-btn>
-                    <div id="navbar-toggle-dropdown" class="navbar-toggle-dropdown p-absolute"
-                        :class="{ open: isToggleNavbar }">
+                    <div
+                        id="navbar-toggle-dropdown"
+                        class="navbar-toggle-dropdown p-absolute"
+                        :class="{ open: isToggleNavbar }"
+                    >
                         <Navbar />
                     </div>
                     <div>
-                        <ul class="navbar-nav navigation-navbar d-flex flex-row">
-                            <!-- <li class="nav-item me-3">
-                                <a class="nav-link active" href="#">Home</a>
-
-                                <ul>
-                                    <li>
-                                        <router-link to="/">
-                                            <p class="mb-0">Homepage One</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/home-two">
-                                            <p class="mb-0">Grocery</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/home-three">
-                                            <p class="mb-0">Niche Market 1</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/home-four">
-                                            <p class="mb-0">Niche Market 2</p>
-                                        </router-link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item me-3">
-                                <a class="nav-link" href="#">Pages</a>
-                                <ul>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Sale Page</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/sale-page-one">
-                                                        <p class="mb-0">Version 1</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/sale-page-two">
-                                                        <p class="mb-0">Version 2</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Vendor</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/all-vendors">
-                                                        <p class="mb-0">All Vendors</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/vendor-store">
-                                                        <p class="mb-0">Vendor Store</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Product</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/search-product">
-                                                        <p class="mb-0">Product Grid/Search</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/single-product">
-                                                        <p class="mb-0">Product List/Search</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/cart">
-                                                        <p class="mb-0">Cart</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/checkout-alternative">
-                                                        <p class="mb-0">Checkout Alternative</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item me-3">
-                                <a class="nav-link" href="#">User Account</a>
-                                <ul>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Address</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/add-address">
-                                                        <p class="mb-0">Add Address</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/list-address">
-                                                        <p class="mb-0">List Address</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Orders</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/order-list">
-                                                        <p class="mb-0">Order List</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/order-details">
-                                                        <p class="mb-0">Order Details</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Profile</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/view-profile">
-                                                        <p class="mb-0">View Profile</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/edit-profile">
-                                                        <p class="mb-0">Edit Profile</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-space-between align-center">
-                                            <p class="mb-0">Support Tickets</p>
-                                            <v-icon>mdi-menu-right</v-icon>
-                                        </a>
-                                        <div class="navbar-submenu">
-                                            <ul>
-                                                <li>
-                                                    <router-link to="/all-tickets">
-                                                        <p class="mb-0">All Tickets</p>
-                                                    </router-link>
-                                                </li>
-                                                <li>
-                                                    <router-link to="/ticket-details">
-                                                        <p class="mb-0">Ticket Details</p>
-                                                    </router-link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <router-link to="/wishlist">
-                                            <p class="mb-0">Wishlist</p>
-                                        </router-link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item me-3">
-                                <a class="nav-link" href="#">Vendor Account</a>
-                                <ul>
-                                    <li>
-                                        <router-link to="/dashboard">
-                                            <p class="mb-0">Dashboard</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/product-list">
-                                            <p class="mb-0">Product List</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/edit-product">
-                                            <p class="mb-0">Edit Product</p>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/profile">
-                                            <p class="mb-0">Profile</p>
-                                        </router-link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item me-3">
-                                <router-link class="nav-link" to="/order-list">
-                                    <p class="mb-0">Track My Orders</p>
-                                </router-link>
-                            </li> -->
+                        <ul
+                            class="navbar-nav navigation-navbar d-flex flex-row"
+                        >
                             <li class="nav-item">
-                                <router-link class="nav-link" :to="{ name: 'home' }">
-                                    <p class="mb-0">home</p>
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'home' }"
+                                >
+                                    <p class="mb-0">Home</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" :to="{ name: 'home.proveedores' }">
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'home.proveedores' }"
+                                >
                                     <p class="mb-0">Proveedores</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" :to="{ name: 'home.productos' }">
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'home.productos' }"
+                                >
                                     <p class="mb-0">Productos</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'solicitud.pedido' }"
+                                >
+                                    <p class="mb-0">Pedidos</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'roles.permisos' }"
+                                >
+                                    <p class="mb-0">Roles y permisos</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link
+                                    class="nav-link"
+                                    :to="{ name: 'users' }"
+                                >
+                                    <p class="mb-0">Usarios</p>
                                 </router-link>
                             </li>
                         </ul>
@@ -534,9 +655,11 @@
     </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 import HeaderNavbar from "./header-navbar.vue";
 import Navbar from "./navbar";
+import { errorMonitor } from "events";
+const crypto = require("crypto");
 export default {
     data() {
         return {
@@ -555,42 +678,106 @@ export default {
             drawer2: false,
             group: null,
             items: [
-                { title: 'Home', icon: 'mdi-view-dashboard', route_name: 'home' },
-                { title: 'Proveedores', icon: 'mdi-view-dashboard', route_name: 'home.proveedores' },
-                { title: 'Productos', icon: 'mdi-view-dashboard', route_name: 'home.productos' },
+                {
+                    title: "Home",
+                    icon: "mdi-view-dashboard",
+                    route_name: "home",
+                },
+                {
+                    title: "Proveedores",
+                    icon: "mdi-view-dashboard",
+                    route_name: "home.proveedores",
+                },
+                {
+                    title: "Productos",
+                    icon: "mdi-view-dashboard",
+                    route_name: "home.productos",
+                },
+                {
+                    title: "Pedidos",
+                    icon: "mdi-view-dashboard",
+                    route_name: "solicitud.pedido",
+                },
+                {
+                    title: "Roles y permisos",
+                    icon: "mdi-view-dashboard",
+                    route_name: "roles.permisos",
+                },
             ],
-        }
+            login: {
+                correo: "",
+                pass: "",
+            },
+            user: {},
+        };
     },
     components: {
         HeaderNavbar,
         Navbar,
     },
     computed: {
-        ...mapGetters(['getCartProducts', 'palabra_clave_busqueda_producto']),
+        ...mapGetters(["getCartProducts", "palabra_clave_busqueda_producto"]),
         computed_palabra_clave_busqueda_producto: {
             get() {
-                return this.palabra_clave_busqueda_producto
+                return this.palabra_clave_busqueda_producto;
             },
             set(val) {
-                this.$store.commit('setpalabra_clave_busqueda_producto', val)
-            }
+                this.$store.commit("setpalabra_clave_busqueda_producto", val);
+            },
         },
         cartTotal() {
             let total = 0;
-            this.getCartProducts.forEach(product => {
-                total += product.amount * product.qty
-            })
+            this.getCartProducts.forEach((product) => {
+                total += product.amount * product.qty;
+            });
             return total;
+        },
+    },
+    mounted() {
+        const token = localStorage.getItem("token");
+        const user = localStorage.getItem("user");
+        if (token && user) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+            this.user = JSON.parse(user);
         }
     },
     methods: {
         ...mapActions(["addCart", "removeCart"]),
+        async loginModal() {
+            try {
+                let { data } = await axios.post("/login-sanctum", {
+                    email: this.login.correo,
+                    password: this.login.pass,
+                });
+                localStorage.setItem("token", data.token);
+                const token = localStorage.getItem("token");
+                if (token) {
+                    axios.defaults.headers.common[
+                        "Authorization"
+                    ] = `Bearer ${token}`;
+                }
+                this.user = data.user;
+                localStorage.setItem("user", JSON.stringify(data.user));
+                this.dialog = false;
+            } catch (error) {
+                console.log(error);
+            }
+        },
         async searchProducto() {
-            await this.$store.dispatch('getProductosBySearch', this.computed_palabra_clave_busqueda_producto);
-            await this.$store.commit('setpalabra_clave_busqueda_producto', this.computed_palabra_clave_busqueda_producto);
+            await this.$store.dispatch(
+                "getProductosBySearch",
+                this.computed_palabra_clave_busqueda_producto
+            );
+            await this.$store.commit(
+                "setpalabra_clave_busqueda_producto",
+                this.computed_palabra_clave_busqueda_producto
+            );
             this.$router.push({
                 name: "home.buscar.productos",
-                params: { palabra_clave: this.computed_palabra_clave_busqueda_producto },
+                params: {
+                    palabra_clave:
+                        this.computed_palabra_clave_busqueda_producto,
+                },
             });
         },
         toggleNavbar() {
@@ -600,14 +787,13 @@ export default {
             this.isToggleNavbar = false;
         },
         removeCartx(item) {
-            this.removeCart(item)
-
+            this.removeCart(item);
         },
         addCartx(item) {
             this.addCart(item);
         },
     },
-}
+};
 </script>
 <style lang="scss" scoped>
 $z-index-sub-topbar: 2;
@@ -693,7 +879,8 @@ $z-99: 99;
         }
     }
 
-    @media (max-width: $md) {}
+    @media (max-width: $md) {
+    }
 }
 
 .navbar {
@@ -719,11 +906,9 @@ $z-99: 99;
     ::v-deep .v-input__slot {
         border: 1px solid rgb(218, 225, 231);
         background-color: #fff !important;
-
     }
 
     .search-bar-dropdown {
-
         height: 39px;
         position: absolute;
         top: 20px;
@@ -761,6 +946,6 @@ $z-99: 99;
 }
 
 .empty-cart-sidebar {
-    height: 80vh
+    height: 80vh;
 }
 </style>
