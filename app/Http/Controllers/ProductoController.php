@@ -18,7 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
         try {
-            $productos = Productos::orderBy('id', 'desc')->get();
+            $productos = Productos::orderBy('id', 'desc')->take(10)->get();
             return response()->json($productos);
         } catch (\Throwable $th) {
             throw $th;

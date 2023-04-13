@@ -27,14 +27,14 @@ export default new router({
             async beforeEnter(to, from, next) {
                 const id = to.params.id;
                 await store.dispatch('getsingleProduct', id)
-                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0,10))
+                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0, 10))
                 console.log({ sinP: store.getters.singleProduct })
                 next(true)
             },
             async beforeRouteUpdate(to, from, next) {
                 const id = to.params.id;
                 await store.dispatch('getsingleProduct', id)
-                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0,10))
+                await store.dispatch('getProductosBySearch', store.getters.singleProduct.nombre.substr(0, 10))
                 console.log({ sinP: store.getters.singleProduct })
                 next()
             },
@@ -57,6 +57,45 @@ export default new router({
             name: "carrito.compra",
             component: () =>
                 import("../Views/cart/Cart.vue"),
+            async beforeRouteUpdate(to, from, next) {
+                if (to.path === from.path) {
+                    next(false);
+                } else {
+                    next();
+                }
+            },
+        },
+        {
+            path: "/solicitud-de-pedidos",
+            name: "solicitud.pedido",
+            component: () =>
+                import("../Views/pedidos/index.vue"),
+            async beforeRouteUpdate(to, from, next) {
+                if (to.path === from.path) {
+                    next(false);
+                } else {
+                    next();
+                }
+            },
+        },
+        {
+            path: "/roles-y-permisos",
+            name: "roles.permisos",
+            component: () =>
+                import("../Views/roles/index.vue"),
+            async beforeRouteUpdate(to, from, next) {
+                if (to.path === from.path) {
+                    next(false);
+                } else {
+                    next();
+                }
+            },
+        },
+        {
+            path: "/usuarios",
+            name: "users",
+            component: () =>
+                import("../Views/users/index.vue"),
             async beforeRouteUpdate(to, from, next) {
                 if (to.path === from.path) {
                     next(false);
