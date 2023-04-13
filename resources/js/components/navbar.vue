@@ -4,39 +4,77 @@
             <li v-for="(nav, index) in navigations" :key="index">
                 <a href="#">
                     <v-avatar tile size="20" class="mr-2">
-                        <img class="icon" :src="nav.icon" alt="">
+                        <img class="icon" :src="nav.icon" alt="" />
                     </v-avatar>
-                    <p class="m-0 mb-0 flex-grow-1"> {{ nav.title }}</p>
+                    <p class="m-0 mb-0 flex-grow-1">{{ nav.title }}</p>
                     <v-icon v-if="nav.menuData">mdi-chevron-right</v-icon>
                 </a>
 
-                <div v-if="nav.menuComponent == 'MegaMenu2' && nav.menuData" class="sub-menu">
+                <div
+                    v-if="nav.menuComponent == 'MegaMenu2' && nav.menuData"
+                    class="sub-menu"
+                >
                     <ul class="py-3">
-                        <li v-for="(navTwo, index) in nav.menuData" :key="index">
+                        <li
+                            v-for="(navTwo, index) in nav.menuData"
+                            :key="index"
+                        >
                             <router-link to="/search-product" class="">
                                 <v-avatar tile size="20" class="mr-2">
-                                    <img class="icon" :src="navTwo.icon" alt="">
+                                    <img
+                                        class="icon"
+                                        :src="navTwo.icon"
+                                        alt=""
+                                    />
                                 </v-avatar>
-                                <p class="mb-0  flex-grow-1"> {{ navTwo.title }}</p>
-                                <v-icon v-if="navTwo.menuData">mdi-chevron-right</v-icon>
+                                <p class="mb-0 flex-grow-1">
+                                    {{ navTwo.title }}
+                                </p>
+                                <v-icon v-if="navTwo.menuData"
+                                    >mdi-chevron-right</v-icon
+                                >
                             </router-link>
                             <div class="sub-menu">
-                                <div v-if="navTwo.menuData && navTwo.menuData.categories" class="mega-menu">
-                                    <div class="d-flex justify-space-between flex-wrap mb-4">
-                                        <div v-for="(navThree, index) in navTwo.menuData.categories" :key="index">
-                                            <h6 class="fw-semibold mb-3">{{ navThree.title }}</h6>
-                                            <ul v-for="(navFour, index) in navThree.subCategories" :key="index">
+                                <div
+                                    v-if="
+                                        navTwo.menuData &&
+                                        navTwo.menuData.categories
+                                    "
+                                    class="mega-menu"
+                                >
+                                    <div
+                                        class="d-flex justify-space-between flex-wrap mb-4"
+                                    >
+                                        <div
+                                            v-for="(navThree, index) in navTwo
+                                                .menuData.categories"
+                                            :key="index"
+                                        >
+                                            <h6 class="fw-semibold mb-3">
+                                                {{ navThree.title }}
+                                            </h6>
+                                            <ul
+                                                v-for="(
+                                                    navFour, index
+                                                ) in navThree.subCategories"
+                                                :key="index"
+                                            >
                                                 <li class="">
-                                                    <router-link to="/search-product">{{ navFour.title }}</router-link>
+                                                    <router-link
+                                                        to="/search-product"
+                                                        >{{
+                                                            navFour.title
+                                                        }}</router-link
+                                                    >
                                                 </li>
-
                                             </ul>
                                         </div>
-
                                     </div>
 
                                     <div class="d-flex justify-content-between">
-                                        <v-img src="../assets/images/promotion/offer-5.png"></v-img>
+                                        <v-img
+                                            src="../assets/images/promotion/offer-5.png"
+                                        ></v-img>
                                     </div>
                                 </div>
                             </div>
@@ -44,9 +82,13 @@
                         <li>
                             <a href="#" class="">
                                 <v-avatar tile size="20" class="mr-2">
-                                    <img class="icon" src="../assets/images/icons/man.svg" alt="">
+                                    <img
+                                        class="icon"
+                                        src="../assets/images/icons/man.svg"
+                                        alt=""
+                                    />
                                 </v-avatar>
-                                <p class="mb-0  flex-grow-1"> Man</p>
+                                <p class="mb-0 flex-grow-1">Man</p>
                                 <!-- <v-icon>mdi-chevron-right</v-icon> -->
                             </a>
                             <!-- <div class="sub-menu">
@@ -128,38 +170,53 @@
                                         </div>
                                     </div> -->
                         </li>
-
-
-
                     </ul>
                 </div>
 
                 <!-- another-conditions  -->
-                <div v-else-if="nav.menuComponent == 'MegaMenu1' && nav.menuData && nav.menuData.categories"
-                    class="sub-menu">
+                <div
+                    v-else-if="
+                        nav.menuComponent == 'MegaMenu1' &&
+                        nav.menuData &&
+                        nav.menuData.categories
+                    "
+                    class="sub-menu"
+                >
                     <div class="mega-menu">
                         <div class="row flex-wrap mb-4">
-                            <div class="col-md-3" v-for="(navTwo, index) in nav.menuData.categories" :key="index">
-                                <h6 class="fw-semibold mb-3">{{ navTwo.title }}</h6>
+                            <div
+                                class="col-md-3"
+                                v-for="(navTwo, index) in nav.menuData
+                                    .categories"
+                                :key="index"
+                            >
+                                <h6 class="fw-semibold mb-3">
+                                    {{ navTwo.title }}
+                                </h6>
                                 <ul>
-                                    <li v-for="(navThree, index) in navTwo.subCategories" :key="index" class="">
-                                        <router-link to="/search-product">{{ navThree.title }}</router-link>
+                                    <li
+                                        v-for="(
+                                            navThree, index
+                                        ) in navTwo.subCategories"
+                                        :key="index"
+                                        class=""
+                                    >
+                                        <router-link to="/search-product">{{
+                                            navThree.title
+                                        }}</router-link>
                                     </li>
-
                                 </ul>
                             </div>
-
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <v-img src="../assets/images/promotion/offer-5.png"></v-img>
+                            <v-img
+                                src="../assets/images/promotion/offer-5.png"
+                            ></v-img>
                         </div>
                     </div>
                 </div>
-
             </li>
-
-
         </ul>
     </div>
 </template>
@@ -172,19 +229,19 @@ export default {
             menu: [
                 {
                     id: 1,
-                    name: 'Fashion',
-                    icon: require('../assets/images/icons/dress.svg'),
+                    name: "Fashion",
+                    icon: require("../assets/images/icons/dress.svg"),
                     dropdownIcon: true,
 
                     subMenu: [
                         {
                             id: 1,
-                            name: 'Man',
-                            icon: require('../assets/images/icons/man.svg'),
+                            name: "Man",
+                            icon: require("../assets/images/icons/man.svg"),
                             dropdownIcon: true,
                             megaMenu: [
                                 {
-                                    title: 'Clothes',
+                                    title: "Clothes",
                                     subCategories: [
                                         {
                                             title: "Shirt",
@@ -205,11 +262,11 @@ export default {
                                             title: "Underwear",
                                             href: "/product/search/underwear",
                                             imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                        }
-                                    ]
+                                        },
+                                    ],
                                 },
                                 {
-                                    title: 'Accessories',
+                                    title: "Accessories",
                                     subCategories: [
                                         {
                                             title: "Shirt",
@@ -230,11 +287,11 @@ export default {
                                             title: "Underwear",
                                             href: "/product/search/underwear",
                                             imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                        }
-                                    ]
+                                        },
+                                    ],
                                 },
                                 {
-                                    title: 'Accessories',
+                                    title: "Accessories",
                                     subCategories: [
                                         {
                                             title: "Shirt",
@@ -255,11 +312,11 @@ export default {
                                             title: "Underwear",
                                             href: "/product/search/underwear",
                                             imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                        }
-                                    ]
+                                        },
+                                    ],
                                 },
                                 {
-                                    title: 'Accessories',
+                                    title: "Accessories",
                                     subCategories: [
                                         {
                                             title: "Shirt",
@@ -280,27 +337,27 @@ export default {
                                             title: "Underwear",
                                             href: "/product/search/underwear",
                                             imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                        }
-                                    ]
-                                }
-                            ]
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                         {
                             id: 2,
-                            name: 'Woman',
-                            icon: require('../assets/images/icons/woman.svg'),
+                            name: "Woman",
+                            icon: require("../assets/images/icons/woman.svg"),
                             dropdownIcon: false,
-                        }
-                    ]
+                        },
+                    ],
                 },
                 {
                     id: 1,
-                    name: 'Groccery',
-                    icon: require('../assets/images/icons/dress.svg'),
+                    name: "Groccery",
+                    icon: require("../assets/images/icons/dress.svg"),
                     dropdownIcon: true,
                     megaMenu: [
                         {
-                            title: 'Clothes',
+                            title: "Clothes",
                             subCategories: [
                                 {
                                     title: "Shirt",
@@ -321,11 +378,11 @@ export default {
                                     title: "Underwear",
                                     href: "/product/search/underwear",
                                     imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                }
-                            ]
+                                },
+                            ],
                         },
                         {
-                            title: 'Accessories',
+                            title: "Accessories",
                             subCategories: [
                                 {
                                     title: "Shirt",
@@ -346,11 +403,11 @@ export default {
                                     title: "Underwear",
                                     href: "/product/search/underwear",
                                     imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                }
-                            ]
+                                },
+                            ],
                         },
                         {
-                            title: 'Accessories',
+                            title: "Accessories",
                             subCategories: [
                                 {
                                     title: "Shirt",
@@ -371,11 +428,11 @@ export default {
                                     title: "Underwear",
                                     href: "/product/search/underwear",
                                     imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                }
-                            ]
+                                },
+                            ],
                         },
                         {
-                            title: 'Accessories',
+                            title: "Accessories",
                             subCategories: [
                                 {
                                     title: "Shirt",
@@ -396,31 +453,28 @@ export default {
                                     title: "Underwear",
                                     href: "/product/search/underwear",
                                     imgUrl: "/assets/images/products/categories/t-shirt.png",
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-
-}
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        };
+    },
+};
 </script>
 <style lang="scss" scoped>
-$primary-500: #D23F57;
-$primary-100: #FCE9EC;
+$primary-500: #d23f57;
+$primary-100: #fce9ec;
 $box-shadow: 0px 4px 16px rgb(43 52 69 / 10%);
-$secondary: #2B3445;
-$gray-900: #2B3445;
+$secondary: #2b3445;
+$gray-900: #2b3445;
 
-
-// ecomdropdown 
+// ecomdropdown
 .ecom-dropdownmenu {
     padding-top: 10px;
 
     &.ecom-dropdownmenu-fixed {
-
         display: none;
 
         &.open {
@@ -440,12 +494,9 @@ $gray-900: #2B3445;
 
         &.disable {
             li {
-
                 // background-color: $gray-100;
                 a {
                     font-weight: bold;
-
-
                 }
             }
         }
@@ -463,7 +514,7 @@ $gray-900: #2B3445;
                 color: $gray-900;
             }
 
-            &:hover> {
+            &:hover > {
                 a {
                     background-color: $primary-100;
                     color: $primary-500;
@@ -475,11 +526,10 @@ $gray-900: #2B3445;
 
                 .sub-menu {
                     display: block;
-
                 }
             }
 
-            // child ul 
+            // child ul
             .sub-menu {
                 position: absolute;
                 left: 100%;
@@ -524,16 +574,13 @@ $gray-900: #2B3445;
                                 a {
                                     background-color: white;
                                     color: $primary-500;
-
                                 }
                             }
                         }
                     }
                 }
-
             }
         }
-
     }
 }
 </style>

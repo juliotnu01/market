@@ -900,9 +900,9 @@ export const store = new Vuex.Store({
             descuento: '',
             comentario: '',
             codigo_promocional: '',
-            direccion:{
+            direccion: {
                 pais: '',
-                estado:'',
+                estado: '',
                 zip: '',
                 direccion_1: '',
                 direccion_2: '',
@@ -914,6 +914,7 @@ export const store = new Vuex.Store({
             }
 
         },
+        snack: false,
 
     },
     getters: {
@@ -926,13 +927,14 @@ export const store = new Vuex.Store({
         singleProduct: (state) => state.singleProduct,
         palabra_clave_busqueda_producto: (state) => state.palabra_clave_busqueda_producto,
         factura: (state) => state.factura,
+        snack: (state) => state.snack,
     },
     actions: {
         async getsingleProduct({ commit }, id) {
             try {
-                let { data }  = await axios(`/api/get-producto/${id}`)
+                let { data } = await axios(`/api/get-producto/${id}`)
                 commit('setSingleProduct', data)
-            } catch (error) {}
+            } catch (error) { }
         },
         async getProductosBySearch({ commit }, dataPalabraSearch) {
             try {
@@ -971,13 +973,16 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
-        setFactura(state, data){
+        setSnack(state, data) {
+            state.snack = data
+        },
+        setFactura(state, data) {
             state.factura = data
         },
-        setpalabra_clave_busqueda_producto(state,data){
+        setpalabra_clave_busqueda_producto(state, data) {
             state.palabra_clave_busqueda_producto = data
         },
-        setSingleProduct(state,data){
+        setSingleProduct(state, data) {
             state.singleProduct = data
         },
         setOverlay(state, data) {
